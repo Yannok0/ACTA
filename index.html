@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Архитектура Цвета</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="header">
+  <img src="img/лого.png" class="logo">
+
+  <nav>
+    <a href="#about">О нас</a>
+    <a href="#services">Услуги/Прайс</a>
+    <a href="booking.html">Записаться</a>
+    <a href="admin.html">Кабинет</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-box">
+
+    <div class="hero-text">
+      <h1>Современный стиль <br> начинается с нами!</h1>
+      <p>Создаём красоту с любовью.</p>
+      <a href="booking.html" class="btn-main">Записаться</a>
+    </div>
+
+    <div class="hero-img">
+      <img src="img/trio.png">
+    </div>
+
+  </div>
+</section>
+
+<!-- О НАС -->
+<section class="about" id="about">
+  <h2>О НАС</h2>
+
+  <div class="about-content">
+    <p>
+      Мы - команда с большим опытом работы в сфере парикмахерского искусства.
+      Создаём чистые, современные образы, уделяя внимание каждой детали.
+      Работаем на профессиональной косметике <strong>Periche Professional</strong>,
+      чтобы обеспечить качество и бережный уход.
+    </p>
+
+    <div class="about-right">
+      <p class="address">
+        Находимся по адресу:
+        г. Полевской, мкр. Ялунина д.15
+      </p>
+      <div class="map">
+        <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A107da534f9c7798417f4b2cd5ba943ee85a22a394221aa3b027cc420ae665e83&amp;source=constructor"frameborder="0"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- МАСТЕРА -->
+<section class="masters">
+  <h2>МАСТЕРА</h2>
+
+  <div class="master main">
+    <img src="img/та.jpg">
+    <h3>Татьяна Агламутдинова</h3>
+    <p>16 лет опыта работы <br> Технолог бренда Periche <br> Ведущий мастер</p>
+    <a href="booking.html?master=tatyana" class="btn-dark">Записаться</a>
+  </div>
+
+  <div class="masters-row">
+    <div class="master">
+      <img src="img/аг.jpg">
+      <h3>Ангелина Гилязутдинова</h3>
+      <p>3 года опыта работы <br> Парикмахер</p>
+      <a href="booking.html?master=angelina" class="btn-dark">Записаться</a>
+    </div>
+
+    <div class="master">
+      <img src="img/ан.jpg">
+      <h3>Анастасия Буторина</h3>
+      <p>2 года опыта работы <br> Колорист</p>
+      <a href="booking.html?master=anastasia" class="btn-dark">Записаться</a>
+    </div>
+  </div>
+</section>
+
+<!-- УСЛУГИ -->
+<section class="services" id="services">
+  <h2>МЫ ВЫПОЛНЯЕМ</h2>
+
+  <div class="service-block">
+    <h4>Стрижки:</h4>
+    <ul>
+      <li>Подравнивание длины</li>
+      <li>Стрижка челки</li>
+      <li>Мужские стрижки</li>
+    </ul>
+  </div>
+
+  <div class="service-block">
+    <h4>Окрашивание:</h4>
+    <ul>
+      <li>Тотал блонд разной длины</li>
+      <li>Осветление корней</li>
+      <li>AIRTOUCH разной длины</li>
+      <li>Тонирование</li>
+      <li>Мелирование</li>
+      <li>Контуринг</li>
+      <li>Однотонное окрашивание</li>
+      <li>Скрытое окрашивание</li>
+      <li>Рельефное окрашивание</li>
+      <li>Снятие оттенка на 1-2 тона</li>
+    </ul>
+  </div>
+
+  <div class="service-block">
+    <h4>Уходовые процедуры:</h4>
+    <ul>
+      <li>Ботокс</li>
+      <li>Кератин</li>
+      <li>4D – протезирование</li>
+      <li>Ревитализация</li>
+      <li>Шёлк – эффект</li>
+    </ul>
+  </div>
+</section>
+
+<section class="portfolio">
+  <h2>Примеры работ</h2>
+
+  <div class="slider">
+    <button class="arrow left" onclick="prevSlide()">‹</button>
+    <div class="slider-window">
+      <div class="slides" id="slides">
+        <img src="img/work1.jpg">
+        <img src="img/work2.jpg">
+        <img src="img/work3.jpg">
+        <img src="img/work4.jpg">
+      </div>
+    </div>
+    <button class="arrow right" onclick="nextSlide()">›</button>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <p>Записаться на услугу или консультацию</p>
+  <a href="booking.html" class="btn-main">Записаться</a>
+</section>
+
+<!-- ОТЗЫВЫ -->
+<section class="reviews">
+  <h2>ОТЗЫВЫ</h2>
+</section>
+
+<footer class="footer">
+
+  <div class="footer-inner">
+
+    <div class="footer-block brand">
+      <h3>Архитектура цвета</h3>
+      <p>Татьяны Агламутдиновой</p>
+      <p class="desc">
+        Создаём индивидуальные образы, подчеркивая естественную красоту через цвет, форму и стиль.
+      </p>
+    </div>
+
+    <div class="footer-block">
+      <h4>Навигация</h4>
+      <a href="#services">Услуги</a>
+      <a href="#portfolio">Работы</a>
+      <a href="#masters">Мастера</a>
+      <a href="booking.html">Запись</a>
+    </div>
+
+    <div class="footer-block">
+      <h4>Контакты</h4>
+      <p>📍Полевской, Ялунина 15</p>
+      <p>📞 +7 (908) 638-22-13</p>
+      <p>📩 Instagram / WhatsApp</p>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 Архитектура цвета Татьяны Агламутдиновой</p>
+  </div>
+
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
