@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Архитектура Цвета - онлайн запись</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="header">
+  <img src="img/лого.png" class="logo">
+
+  <nav>
+    <a href="index.html#about">О нас</a>
+    <a href="index.html#services">Услуги</a>
+    <a href="booking.html" class="nav-active">Записаться</a>
+    <a href="admin.html">Кабинет</a>
+  </nav>
+</header>
+
+  <section class="booking-page">
+
+    <div class="booking-title">
+    <h1 id="booking-title">Онлайн запись</h1>
+      <p>Выберите услугу и удобное время</p>
+    </div>
+
+    <!-- УСЛУГИ -->
+<div class="booking-step">
+
+  <h2>1. Выберите услугу</h2>
+
+  <div class="cards">
+
+    <div class="card-option service-card" data-service="consultation">
+      <h3>Консультация</h3>
+    </div>
+
+    <div class="card-option service-card" data-service="coloring">
+      <h3>Окрашивание</h3>
+      <p>Тотал блонд, AIRTOUCH, контуринг и другие техники.</p>
+    </div>
+
+    <div class="card-option service-card" data-service="haircut">
+      <h3>Стрижка</h3>
+      <p>Женские и мужские стрижки любой сложности.</p>
+    </div>
+
+    <div class="card-option service-card" data-service="care">
+      <h3>Уход</h3>
+      <p>Кератин, ботокс, восстановление и уходовые процедуры.</p>
+    </div>
+
+  </div>
+
+  <!-- ПОДУСЛУГИ -->
+  <div class="subservices" id="subservices"></div>
+
+</div>
+
+    </div>
+
+    <!-- МАСТЕР -->
+
+    <div class="booking-step">
+
+      <h2>2. Мастер</h2>
+
+      <div id="master-selection">
+
+        <div class="cards">
+
+          <div class="card-option master-card" data-master="tatyana">
+            <h3>Татьяна Агламутдинова</h3>
+          </div>
+
+          <div class="card-option master-card" data-master="angelina">
+            <h3>Ангелина Гилязутдинова</h3>
+          </div>
+          
+          <div class="card-option master-card" data-master="anastasia">
+            <h3>Анастасия Буторина</h3>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- ДАТА -->
+
+    <div class="booking-step">
+
+      <h2>3. Выберите дату</h2>
+
+      <input type="date" class="date-input" id="dateInput">
+
+    </div>
+
+    <!-- ВРЕМЯ -->
+
+    <div class="booking-step">
+
+      <h2>4. Время</h2>
+
+      <div class="times">
+
+        <button class="time-btn">10:00</button>
+        <button class="time-btn">11:30</button>
+        <button class="time-btn">13:00</button>
+        <button class="time-btn">15:30</button>
+        <button class="time-btn">17:00</button>
+
+      </div>
+
+    </div>
+
+    <!-- КОНТАКТЫ -->
+
+    <div class="booking-step">
+
+      <h2>5. Ваши данные</h2>
+
+      <div class="booking-form">
+
+        <input type="text" placeholder="Ваше имя">
+        <input type="tel" placeholder="Телефон">
+
+        <button class="submit-btn">Подтвердить запись</button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
