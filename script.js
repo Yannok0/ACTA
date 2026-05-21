@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // =========================
-// STATE (единственный источник правды)
+// STATE 
 // =========================
 
 const booking = {
@@ -111,7 +111,7 @@ if (urlMaster && masters[urlMaster]) {
 
 
 // =========================
-// RENDER UI (ОДНА ФУНКЦИЯ СИНХРОНИЗАЦИИ)
+// RENDER UI 
 // =========================
 
 function syncUI() {
@@ -179,7 +179,7 @@ function renderSubservices() {
 
   subservicesContainer.innerHTML = "";
 
-  // ❗ КОНСУЛЬТАЦИЯ — БЕЗ ПОДУСЛУГ
+  // КОНСУЛЬТАЦИЯ — БЕЗ ПОДУСЛУГ
   if (booking.service === "consultation") {
     subservicesContainer.innerHTML = "<p>Консультация не требует выбора дополнительной услуги</p>";
     booking.subservice = "Консультация";
@@ -291,3 +291,50 @@ document.querySelector(".submit-btn").addEventListener("click", () => {
 // =========================
 
 syncUI();
+
+// ===== БАЗА МАСТЕРОВ =====
+const masters = {
+  tatyana: {
+    password: "architec.color1",
+    name: "tatyana_a"
+  },
+
+  angelina: {
+    password: "architec.color1",
+    name: "angelina_g"
+  },
+  anastasia: {
+    password: "architec.color1",
+    name: "anastasia_b"
+  }
+};
+
+const loginForm = document.getElementById("loginForm");
+
+if (loginForm) {
+
+  loginForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const login = document.getElementById("login").value.trim();
+    const password = document.getElementById("password").value.trim();
+
+    const master = masters[login];
+
+    if (master && master.password === password) {
+
+      // сохраняем кто вошёл
+      localStorage.setItem("master", login);
+
+      // переход в кабинет
+      window.location.href = "master-panel.html";
+
+    } else {
+
+      document.getElementById("error").textContent =
+        "Неверный логин или пароль";
+
+    }
+  });
+
+}

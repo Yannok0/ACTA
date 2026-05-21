@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Панель мастера</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="header">
+  <img src="img/лого.png" class="logo">
+
+  <nav>
+    <a href="#about">О нас</a>
+    <a href="#services">Услуги</a>
+    <a href="booking.html">Записаться</a>
+    <a href="master-login.html">Кабинет мастера</a>
+  </nav>
+</header>
+
+  <div class="panel">
+
+    <h1>Кабинет мастера</h1>
+
+    <!-- PROFILE -->
+    <section class="block">
+      <h2>Профиль</h2>
+
+      <input type="text" id="name" placeholder="Имя мастера">
+    </section>
+
+    <!-- SERVICES -->
+    <section class="block">
+      <h2>Услуги и цены</h2>
+
+      <div class="service-item">
+        <input type="text" placeholder="Название услуги">
+        <input type="number" placeholder="Цена">
+      </div>
+
+      <div class="service-item">
+        <input type="text" placeholder="Название услуги">
+        <input type="number" placeholder="Цена">
+      </div>
+
+      <button class="add-btn" onclick="addService()">
+        + Добавить услугу
+      </button>
+    </section>
+
+    <!-- SCHEDULE -->
+    <section class="block">
+      <h2>График работы</h2>
+
+      <label>Понедельник - Пятница</label>
+      <input type="text" placeholder="10:00 - 18:00">
+
+      <label>Суббота</label>
+      <input type="text" placeholder="10:00 - 16:00">
+
+      <label>Воскресенье</label>
+      <input type="text" placeholder="Выходной">
+    </section>
+
+    <!-- SAVE -->
+    <button class="save-btn" onclick="saveData()">
+      Сохранить изменения
+    </button>
+
+  </div>
+
+  <script src="master-panel.js"></script>
+
+</body>
+</html>
