@@ -288,3 +288,11 @@ if (menuBtn && menu) {
   });
 }
 }
+
+document.getElementById("logoutBtnMenu").addEventListener("click", () => {
+
+  localStorage.removeItem("master");
+
+  window.location.href = "master-login.html";
+
+});
