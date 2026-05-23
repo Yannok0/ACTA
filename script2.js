@@ -278,16 +278,13 @@ if (page === "panel") {
 
   renderNotif();
 
-  // =========================
-  // MENU (если есть бургер)
-  // =========================
+  // MENU 
+const menuBtn = document.getElementById("menuBtn");
+const menu = document.getElementById("menuDropdown");
 
-  const menuBtn = document.getElementById("menuBtn");
-  const menu = document.getElementById("menuDropdown");
-
-  if (menuBtn && menu) {
-    menuBtn.onclick = () => {
-      menu.classList.toggle("open");
-    };
-  }
+if (menuBtn && menu) {
+  menuBtn.addEventListener("click", () => {
+    menu.classList.toggle("open");
+  });
+}
 }
