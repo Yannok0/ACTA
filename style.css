@@ -1347,150 +1347,282 @@ nav a {
 
 /* КОНЕЦ ЛК*/
 
+/* =========================================
+   FULL MOBILE ADAPTIVE (REPLACE OLD ONE)
+   ========================================= */
 
-/* =========================
-   GLOBAL RESPONSIVE SYSTEM
-========================= */
-
-/* чтобы не было переполнений */
-* {
-  box-sizing: border-box;
-}
-
-img {
+/* базовая защита */
+html, body {
   max-width: 100%;
-  height: auto;
-}
-
-/* контейнеры не вылезают */
-body {
   overflow-x: hidden;
 }
 
 /* =========================
-   TABLET (<= 900px)
-========================= */
-@media (max-width: 900px) {
+   TABLET + MOBILE (<=768px)
+   ========================= */
 
-  /* TEXT */
-  h1 {
-    font-size: 32px !important;
-  }
-
-  h2 {
-    font-size: 24px !important;
-  }
-
-  p {
-    font-size: 16px !important;
-  }
+@media (max-width: 768px) {
 
   /* HEADER */
   .header {
-    flex-wrap: wrap;
-    gap: 10px;
+    flex-direction: column;
     padding: 15px;
+    gap: 10px;
+  }
+
+  .logo {
+    width: 170px;
   }
 
   nav {
+    display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 10px;
   }
 
-  /* CARDS / GRID */
+  nav a {
+    font-size: 18px;
+    margin: 0;
+  }
+
+  /* HERO */
+  .hero-box {
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+    gap: 20px;
+  }
+
+  .hero-text h1 {
+    font-size: 22px;
+  }
+
+  .hero-text p {
+    font-size: 16px;
+  }
+
+  .hero-img {
+    width: 100%;
+  }
+
+  /* BUTTONS */
+  .btn-main,
+  .btn-dark {
+    width: 100%;
+    max-width: 280px;
+    height: 50px;
+    font-size: 18px;
+  }
+
+  /* ABOUT */
+  .about h2 {
+    font-size: 28px;
+  }
+
+  .about p {
+    font-size: 18px;
+    line-height: 1.5;
+    text-align: center;
+  }
+
+  .about-content {
+    flex-direction: column;
+    margin: 0;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .about-right {
+    width: 100%;
+  }
+
+  .about .address {
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .map {
+    height: 200px;
+  }
+
+  /* MASTERS */
+  .masters h2 {
+    font-size: 28px;
+  }
+
+  .masters-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .master img {
+    width: 150px;
+    height: 150px;
+  }
+
+  .master h3 {
+    font-size: 22px;
+  }
+
+  .master p {
+    font-size: 16px;
+  }
+
+  /* SERVICES */
+  .services h2 {
+    font-size: 28px;
+  }
+
+  .service-block h4 {
+    font-size: 20px;
+  }
+
+  .service-block li {
+    font-size: 16px;
+  }
+
+  /* PORTFOLIO */
+  .portfolio h2 {
+    font-size: 28px;
+  }
+
+  .slider-window {
+    width: 95%;
+    height: 360px;
+    margin: 0 auto;
+  }
+
+  .arrow {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+
+  /* CTA */
+  .cta {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+    padding: 20px;
+  }
+
+  .cta p {
+    font-size: 20px;
+  }
+
+  .cta .btn-main {
+    width: 100%;
+    max-width: 280px;
+    height: 50px;
+    font-size: 18px;
+  }
+
+  /* BOOKING */
   .cards {
     flex-direction: column;
   }
 
   .card-option {
     width: 100%;
-    min-width: unset;
   }
 
-  /* BUTTONS */
-  button {
-    font-size: 16px !important;
+  .time-btn {
+    width: 48%;
   }
 
-  /* FORMS */
-  input, textarea {
-    font-size: 16px !important;
+  .submit-btn {
+    width: 100%;
+    height: 55px;
+    font-size: 18px;
+  }
+
+  /* LOGIN */
+  .login-wrapper {
+    padding: 25px 20px;
+  }
+
+  #loginForm input {
+    font-size: 16px;
+    height: 50px;
+  }
+
+  #loginForm button {
+    font-size: 18px;
+    height: 52px;
+  }
+
+  /* MASTER PANEL */
+  .master-layout {
+    flex-direction: column;
+  }
+
+  .master-sidebar {
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .side-btn {
+    min-width: 120px;
+    font-size: 13px;
+  }
+
+  .summary {
+    grid-template-columns: 1fr;
+  }
+
+  .bookings-table {
+    min-width: 600px;
+  }
+
+  .block {
+    overflow-x: auto;
   }
 }
 
 /* =========================
-   MOBILE (<= 480px)
-========================= */
+   SMALL PHONES (<=480px)
+   ========================= */
+
 @media (max-width: 480px) {
 
-  /* TEXT */
-  h1 {
-    font-size: 24px !important;
+  .hero-text h1 {
+    font-size: 18px;
   }
 
-  h2 {
-    font-size: 20px !important;
+  .hero-text p {
+    font-size: 14px;
   }
 
-  p {
-    font-size: 14px !important;
+  .about p {
+    font-size: 16px;
   }
 
-  /* HEADER */
-  .header {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+  .service-block li {
+    font-size: 14px;
   }
 
-  nav {
-    flex-direction: column;
-    width: 100%;
+  .slider-window {
+    height: 280px;
   }
 
-  nav a {
-    padding: 8px 0;
+  .cta p {
+    font-size: 18px;
   }
 
-  /* SPACING */
-  .booking-page,
-  .panel,
-  .master-content {
-    padding: 15px !important;
-    margin: 20px auto !important;
+  .cta .btn-main {
+    font-size: 16px;
+    height: 46px;
   }
 
-  /* CARDS */
-  .card-option {
-    padding: 15px;
-  }
-
-  /* BUTTONS */
-  button {
-    width: 100%;
-  }
-
-  /* TABLE FIX (панель мастера) */
-  table {
-    display: block;
-    overflow-x: auto;
-    white-space: nowrap;
-  }
-
-  /* TIME BUTTONS */
-  .time-btn {
-    width: 100% !important;
-  }
-
-  /* SIDEBAR (панель мастера) */
-  .master-sidebar {
-    flex-direction: row !important;
-    overflow-x: auto;
-    width: 100%;
-  }
-
-  .side-btn {
-    white-space: nowrap;
+  .portfolio h2,
+  .about h2,
+  .masters h2,
+  .services h2 {
+    font-size: 24px;
   }
 }
