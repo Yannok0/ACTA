@@ -2,77 +2,107 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Панель мастера</title>
-
+  <title>Личный кабинет</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body data-page="panel">
 
-<header class="header">
-  <img src="img/лого.png" class="logo">
+<header class="header master-header">
+  <img class="logo" src="img/лого.png">
+  <h1 class="master-title">Личный кабинет — <span id="masterName">Мастер</span>
+  </h1>
+  <div class="master-right">
+    <div class="notif-wrapper">
+      <button class="notif-btn">🔔</button>
+      <span id="notifCount" class="notif-badge">0</span>
+    </div>
 
-  <nav>
-    <a href="#about">О нас</a>
-    <a href="#services">Услуги</a>
-    <a href="booking.html">Записаться</a>
-    <a href="master-login.html">Кабинет мастера</a>
-  </nav>
+    <div class="master-profile">
+      <img id="masterAvatar" class="avatar" src="">
+      <span id="masterNameTop">Мастер</span>
+    </div>
+    <div class="menu-wrapper">
+      <button class="menu-btn" id="menuBtn">☰</button>
+
+      <div class="menu-dropdown" id="menuDropdown">
+          <a class="side-btn" href="index.html">Главная</a>
+          <a class="side-btn" href="booking.html">Запись клиентам</a>
+      <button class="side-btn" id="logoutBtnMenu">Выйти</button>
+    </div>
+</div>
+  </div>
 </header>
+<div class="master-layout">
 
-  <div class="panel">
+  <!-- SIDEBAR -->
+  <aside class="master-sidebar">
+    <button class="side-btn active" data-tab="bookings">Записи</button>
+    <button class="side-btn" data-tab="schedule">Расписание</button>
+    <button class="side-btn" data-tab="services">Услуги</button>
+    <button class="side-btn" data-tab="notifications">Уведомления</button>
+  </aside>
 
-    <h1>Кабинет мастера</h1>
-
-    <!-- PROFILE -->
-    <section class="block">
-      <h2>Профиль</h2>
-
-      <input type="text" id="name" placeholder="Имя мастера">
-    </section>
-
-    <!-- SERVICES -->
-    <section class="block">
-      <h2>Услуги и цены</h2>
-
-      <div class="service-item">
-        <input type="text" placeholder="Название услуги">
-        <input type="number" placeholder="Цена">
+  <!-- CONTENT -->
+  <main class="master-content">
+    <!-- BOOKINGS -->
+    <section class="tab active" id="bookings">
+      <h2>Записи</h2>
+      <div class="date-bar">
+        <input type="date">
       </div>
 
-      <div class="service-item">
-        <input type="text" placeholder="Название услуги">
-        <input type="number" placeholder="Цена">
-      </div>
+      <table class="bookings-table">
+        <thead>
+          <tr>
+            <th>Время</th>
+            <th>Имя</th>
+            <th>Услуга</th>
+            <th>Телефон</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="bookingsBody"></tbody>
+      </table>
 
-      <button class="add-btn" onclick="addService()">
-        + Добавить услугу
-      </button>
+      <div class="summary">
+        <div class="summary-card">
+          <h3>Сегодня</h3>
+          <p id="todayCount">0</p>
+        </div>
+
+        <div class="summary-card">
+          <h3>Ближайшие</h3>
+          <div id="nextBookings"></div>
+        </div>
+      </div>
     </section>
+
 
     <!-- SCHEDULE -->
-    <section class="block">
-      <h2>График работы</h2>
-
-      <label>Понедельник - Пятница</label>
-      <input type="text" placeholder="10:00 - 18:00">
-
-      <label>Суббота</label>
-      <input type="text" placeholder="10:00 - 16:00">
-
-      <label>Воскресенье</label>
-      <input type="text" placeholder="Выходной">
+    <section class="tab" id="schedule">
+      <h2>Расписание</h2>
+      <div id="scheduleContainer"></div>
     </section>
 
-    <!-- SAVE -->
-    <button class="save-btn" onclick="saveData()">
-      Сохранить изменения
-    </button>
 
-  </div>
+    <!-- SERVICES -->
+    <section class="tab" id="services">
+      <h2>Услуги</h2>
+      <div id="servicesContainer"></div>
+    </section>
 
-  <script src="master-panel.js"></script>
 
+    <!-- NOTIFICATIONS -->
+    <section class="tab" id="notifications">
+      <h2>Уведомления</h2>
+      <div id="notificationsContainer"></div>
+    </section>
+
+
+  </main>
+</div>
+
+<script src="script2.js"></script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-/* ===== GLOBAL ===== */
+/* основные */
 
 * {
   box-sizing: border-box;
@@ -13,8 +13,7 @@ img {
   display: block;
 }
 
-/* ===== FONT ===== */
-
+/* шрифт */
 @font-face {
   font-family: 'Arodora';
   src: url('fonts/ArodoraPro-Light.otf') format('opentype');
@@ -29,7 +28,7 @@ body {
   color: #222;
 }
 
-/* ===== HEADER ===== */
+/* шапка */
 
 .header {
   display: flex;
@@ -57,7 +56,7 @@ nav a:hover{
 
 }
 
-/* ACTIVE NAV */
+/* навигация актив */
 
 nav a {
   position: relative;
@@ -69,22 +68,16 @@ nav a {
 
 .nav-active::after {
   content: "";
-
   position: absolute;
-
   left: 0;
   bottom: -6px;
-
   width: 100%;
   height: 2px;
-
   background: #e5c96b;
-
   border-radius: 20px;
 }
 
-
-/* ===== HERO ===== */
+ /* херо */
 
 .hero {
   display: flex;
@@ -128,17 +121,15 @@ nav a {
   object-fit: cover;
 }
 
-/* ===== BUTTONS ===== */
+/* кнопки */
 
 .btn-main,
 .btn-dark {
   display: flex;
   justify-content: center;
   align-items: center;
-
   text-decoration: none;
   cursor: pointer;
-
   transition: 0.2s ease;
 }
 
@@ -155,14 +146,10 @@ nav a {
 .btn-main {
   width: 303px;
   height: 60px;
-
   font-size: 35px;
-
   margin-top: 20px;
-
   background: #e5c96b;
   color: #222;
-
   border: none;
   border-radius: 6px;
 }
@@ -170,18 +157,14 @@ nav a {
 .btn-dark {
   width: 290px;
   height: 56px;
-
   background: #000;
   color: #fff;
-
   border-radius: 8px;
-
   font-size: 28px;
-
   margin-top: 25px;
 }
 
-/* ===== ABOUT ===== */
+/* о нас */
 
 .about {
   margin-top: 80px;
@@ -196,9 +179,7 @@ nav a {
 .about-content {
   display: flex;
   gap: 80px;
-
   margin: 0 132px 0 119px;
-
   align-items: flex-start;
   justify-content: space-between;
 }
@@ -211,16 +192,13 @@ nav a {
 .about p {
   font-size: 32px;
   line-height: 1.25;
-
   text-align: left;
-
   max-width: 550px;
   margin: 0;
 }
 
 .about-right {
   width: 400px;
-
   display: flex;
   flex-direction: column;
 }
@@ -228,20 +206,16 @@ nav a {
 .about .address {
   font-size: 22px;
   line-height: 1.4;
-
   color: #555;
-
   text-align: left;
-
   margin-bottom: 20px;
 }
 
-/* ===== MAP ===== */
+/* карта */
 
 .map {
   width: 100%;
   height: 290px;
-
   overflow: hidden;
   border-radius: 10px;
 }
@@ -252,7 +226,7 @@ nav a {
   border: none;
 }
 
-/* ===== MASTERS ===== */
+/* мастера */
 
 .masters {
   margin-top: 120px;
@@ -277,17 +251,14 @@ nav a {
 .master img {
   width: 220px;
   height: 220px;
-
   object-fit: cover;
   border-radius: 50%;
 }
 
 .master h3 {
   font-size: 40px;
-
   margin-top: 25px;
   margin-bottom: 15px;
-
   font-weight: 700;
   text-align: center;
 }
@@ -295,9 +266,7 @@ nav a {
 .master p {
   font-size: 28px;
   line-height: 1.4;
-
   margin: 0;
-
   text-align: center;
 }
 
@@ -305,11 +274,10 @@ nav a {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-
   gap: 140px;
 }
 
-/* ===== SERVICES ===== */
+/* услуги */
 
 .services {
   margin-top: 80px;
@@ -323,9 +291,7 @@ nav a {
 
 .service-block {
   max-width: 750px;
-
   margin: 50px auto;
-
   text-align: left;
   padding: 0 20px;
 }
@@ -333,53 +299,40 @@ nav a {
 .service-block h4 {
   font-size: 34px;
   margin-bottom: 10px;
-
   font-weight: 600;
 }
 
 .service-block ul {
   border-left: 2px solid #222;
-
   list-style: none;
-
   display: inline-block;
-
   margin-left: 60px;
   margin-top: 0;
-
   padding-left: 10px;
 }
 
 .service-block li {
   font-size: 30px;
   line-height: 1.5;
-
   margin-bottom: 10px;
-
   position: relative;
-
   padding-left: 26px;
 }
 
 .service-block li::before {
   content: "✦";
-
   position: absolute;
-
   left: 6px;
   top: 50%;
-
   transform: translateY(-50%);
-
   color: #e5c96b;
   font-size: 14px;
 }
 
-/* ===== PORTFOLIO ===== */
+/* фото-портфолио */
 
 .portfolio {
   text-align: center;
-
   margin-top: 80px;
   margin-bottom: 40px;
 }
@@ -393,52 +346,39 @@ nav a {
   display: flex;
   align-items: center;
   justify-content: center;
-
   gap: 10px;
 }
 
 .slider-window {
   width: 600px;
   max-width: 90vw;
-
   height: 650px;
-
   overflow: hidden;
   border-radius: 12px;
-
   position: relative;
 }
 
 .slides {
   display: flex;
   height: 100%;
-
   transition: transform 0.6s ease;
 }
 
 .slides img {
   width: 100%;
   height: 100%;
-
   flex: 0 0 100%;
-
   object-fit: cover;
 }
 
 .arrow {
   background: #e5c96b;
-
   border: none;
-
   width: 50px;
   height: 50px;
-
   font-size: 28px;
-
   cursor: pointer;
-
   border-radius: 50%;
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -448,13 +388,11 @@ nav a {
   transform: scale(1.05);
 }
 
-/* ===== CTA ===== */
+/* CTA */
 
 .cta {
   background: #eee;
-
   padding: 20px 80px;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -467,60 +405,31 @@ nav a {
 .cta .btn-main {
   width: 303px;
   height: 60px;
-
   font-size: 30px;
-
   margin-top: 0;
 }
 
-/* ===== REVIEWS ===== */
-
-.reviews {
-  border: 2px solid black;
-
-  height: 250px;
-
-  margin: 40px 132px;
-
-  text-align: center;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.reviews h2 {
-  font-size: 48px;
-}
-
-/* ===== FOOTER ===== */
+/* подвал */
 
 .footer {
   background: #1f1f1f;
   color: #fff;
-
   margin-top: 80px;
-
   padding: 70px 40px 20px;
 }
 
 .footer-inner {
   max-width: 1100px;
-
   margin: 0 auto;
-
   display: flex;
   justify-content: space-between;
-
   gap: 50px;
-
   flex-wrap: wrap;
 }
 
 .footer-block.brand h3 {
   font-size: 26px;
   margin: 0;
-
   letter-spacing: 1px;
 }
 
@@ -531,12 +440,9 @@ nav a {
 
 .footer-block.brand .desc {
   margin-top: 15px;
-
   font-size: 13px;
   line-height: 1.6;
-
   color: #aaa;
-
   max-width: 280px;
 }
 
@@ -558,15 +464,10 @@ nav a {
 
 .footer a {
   display: block;
-
   color: #bbb;
-
   text-decoration: none;
-
   margin-bottom: 8px;
-
   font-size: 14px;
-
   transition: 0.2s;
 }
 
@@ -576,13 +477,9 @@ nav a {
 
 .footer-bottom {
   text-align: center;
-
   margin-top: 50px;
-
   border-top: 1px solid rgba(255,255,255,0.08);
-
   padding-top: 15px;
-
   font-size: 12px;
   color: #777;
 }
@@ -592,7 +489,9 @@ nav a {
   gap: 8px;
 }
 
-/* BOOKING */
+/* КОНЕЦ ГЛАВНОЙ СТРАНИЦЫ */
+
+/* букинг */
 
 .booking-page {
   max-width: 1100px;
@@ -615,16 +514,13 @@ nav a {
   color: #666;
 }
 
-/* STEP */
+/* этапы записи */
 
 .booking-step {
   background: white;
-
   border-radius: 18px;
-
   padding: 40px;
   margin-bottom: 30px;
-
   box-shadow: 0 10px 30px rgba(0,0,0,0.04);
 }
 
@@ -633,7 +529,7 @@ nav a {
   margin-bottom: 25px;
 }
 
-/* CARDS */
+/* карточки общее */
 
 .cards {
   display: flex;
@@ -644,14 +540,10 @@ nav a {
 .card-option {
   flex: 1;
   min-width: 220px;
-
   border: 2px solid #eee;
   border-radius: 14px;
-
   padding: 25px;
-
   cursor: pointer;
-
   transition: 0.2s ease;
   background: #fff;
 }
@@ -677,11 +569,10 @@ nav a {
   line-height: 1.5;
 }
 
-/* SUBSERVICES */
+/* услуги карточки */
 
 .subservices {
   margin-top: 30px;
-
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
@@ -689,17 +580,12 @@ nav a {
 
 .subservice-btn {
   padding: 14px 22px;
-
   border: 2px solid #eee;
   border-radius: 10px;
-
   background: white;
-
   cursor: pointer;
-
   font-size: 18px;
   font-family: inherit;
-
   transition: 0.2s ease;
 }
 
@@ -713,29 +599,12 @@ nav a {
   border-color: #e5c96b;
 }
 
-/* MOBILE */
-
-@media (max-width: 768px) {
-
-  .subservices {
-    gap: 10px;
-  }
-
-  .subservice-btn {
-    width: 100%;
-    font-size: 16px;
-  }
-
-}
-
-/* SELECTED MASTER */
+/* мастера карточки */
 
 .selected-master {
   background: #fffdf5;
   border: 2px solid #e5c96b;
-
   border-radius: 14px;
-
   padding: 25px;
 }
 
@@ -749,24 +618,26 @@ nav a {
   color: #666;
 }
 
-/* DATE */
+.master-card.active {
+  border: 2px solid #e5c96b;
+  background: #fffdf5;
+  transform: translateY(-2px);
+}
+
+/* календарь */
 
 .date-input {
   width: 100%;
   max-width: 300px;
-
   height: 55px;
-
   padding: 0 15px;
-
   border: 2px solid #ddd;
   border-radius: 10px;
-
   font-size: 18px;
   font-family: inherit;
 }
 
-/* TIMES */
+/* время */
 
 .times {
   display: flex;
@@ -777,17 +648,12 @@ nav a {
 .time-btn {
   width: 110px;
   height: 50px;
-
   border: none;
   border-radius: 10px;
-
   background: #f1f1f1;
-
   cursor: pointer;
-
   font-size: 18px;
   font-family: inherit;
-
   transition: 0.2s ease;
 }
 
@@ -799,7 +665,7 @@ nav a {
   background: #e5c96b;
 }
 
-/* FORM */
+/* форма подтверждения */
 
 .booking-form {
   display: flex;
@@ -809,35 +675,26 @@ nav a {
 
 .booking-form input {
   height: 60px;
-
   border: 2px solid #ddd;
   border-radius: 10px;
-
   padding: 0 20px;
-
   font-size: 18px;
   font-family: inherit;
 }
 
-/* BUTTON */
+/* кнопки букинг */
 
 .submit-btn {
   width: 100%;
   max-width: 350px;
-
   height: 65px;
-
   border: none;
   border-radius: 12px;
-
   background: #e5c96b;
   color: #222;
-
   font-size: 24px;
   font-family: inherit;
-
   cursor: pointer;
-
   transition: 0.2s ease;
 }
 
@@ -845,330 +702,9 @@ nav a {
   transform: translateY(-2px);
 }
 
+/* КОНЕЦ БУКИНГА */
 
-/* ===== MOBILE ===== */
-
-@media (max-width: 768px) {
-
-  .header {
-    flex-direction: column;
-
-    gap: 15px;
-
-    padding: 20px;
-  }
-
-  .logo {
-    width: 180px;
-  }
-
-  nav {
-    justify-content: center;
-  }
-
-  nav a {
-    font-size: 16px;
-  }
-
-  .hero {
-    padding: 0 15px;
-  }
-
-  .hero-box {
-    width: 100%;
-    padding: 25px 20px;
-  }
-
-  .hero-text h1 {
-    font-size: 24px;
-    line-height: 1.3;
-  }
-
-  .hero-text p {
-    font-size: 18px;
-  }
-
-  .hero-img img {
-    max-height: 320px;
-  }
-
-  .btn-main,
-  .btn-dark {
-    width: 100%;
-    max-width: 280px;
-
-    font-size: 18px;
-  }
-
-  .btn-main {
-    height: 54px;
-  }
-
-  .btn-dark {
-    height: 52px;
-  }
-
-  .about h2,
-  .masters h2,
-  .services h2,
-  .portfolio h2,
-  .reviews h2 {
-    font-size: 32px;
-  }
-
-  .about {
-    margin-top: 60px;
-  }
-
-  .about-content {
-    margin: 0 20px;
-  }
-
-  .about p {
-    font-size: 20px;
-  }
-
-  .about .address {
-    font-size: 18px;
-  }
-
-  .masters {
-    margin-top: 80px;
-  }
-
-  .master img {
-    width: 180px;
-    height: 180px;
-  }
-
-  .master h3 {
-    font-size: 26px;
-  }
-
-  .master p {
-    font-size: 18px;
-  }
-
-  .service-block {
-    padding: 0 10px;
-  }
-
-  .service-block h4 {
-    font-size: 24px;
-  }
-
-  .service-block ul {
-    margin-left: 15px;
-  }
-
-  .service-block li {
-    font-size: 18px;
-    line-height: 1.4;
-  }
-
-  .slider {
-    gap: 5px;
-  }
-
-  .slider-window {
-    width: 92vw;
-    height: 380px;
-  }
-
-  .arrow {
-    width: 40px;
-    height: 40px;
-
-    font-size: 22px;
-  }
-
-  .cta {
-    padding: 25px 20px;
-  }
-
-  .cta p {
-    font-size: 20px;
-  }
-
-  .cta .btn-main {
-    margin-top: 10px;
-    font-size: 18px;
-  }
-
-  .reviews {
-    height: 180px;
-    margin: 30px 20px;
-  }
-
-  .footer {
-    padding: 50px 20px 20px;
-  }
-
-  .footer-inner {
-    flex-direction: column;
-    text-align: center;
-
-    gap: 40px;
-  }
-
-  .footer-block {
-    min-width: unset;
-  }
-}
-
-/* ===== SMALL MOBILE ===== */
-
-@media (max-width: 480px) {
-
-  .hero-text h1 {
-    font-size: 20px;
-  }
-
-  .hero-text p {
-    font-size: 16px;
-  }
-
-  .hero-img img {
-    max-height: 260px;
-  }
-
-  .slider-window {
-    height: 300px;
-  }
-
-  .cta p {
-    font-size: 18px;
-  }
-
-  .service-block li {
-    font-size: 16px;
-  }
-}
-
-/* ===== TABLET ===== */
-
-@media (max-width: 1024px) {
-
-  .header {
-    padding: 20px 40px;
-  }
-
-  .logo {
-    width: 220px;
-  }
-
-  nav {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-  }
-
-  nav a {
-    margin-left: 0;
-    font-size: 22px;
-  }
-
-  .hero-box {
-    width: 90%;
-
-    flex-direction: column;
-
-    text-align: center;
-
-    padding: 40px 30px;
-
-    height: auto;
-  }
-
-  .hero-text {
-    margin-left: 0;
-  }
-
-  .hero-text h1 {
-    font-size: 32px;
-  }
-
-  .hero-text p {
-    font-size: 22px;
-  }
-
-  .hero-img {
-    width: 100%;
-    margin-top: 30px;
-  }
-
-  .hero-img img {
-    max-height: 450px;
-    margin: 0 auto;
-
-    object-fit: contain;
-  }
-
-  .about-content {
-    flex-direction: column;
-
-    margin: 0 40px;
-
-    gap: 40px;
-  }
-
-  .about p {
-    max-width: 100%;
-    font-size: 24px;
-  }
-
-  .about-right {
-    width: 100%;
-  }
-
-  .masters-row {
-    flex-wrap: wrap;
-    gap: 60px;
-  }
-
-  .master h3 {
-    font-size: 30px;
-  }
-
-  .master p {
-    font-size: 22px;
-  }
-
-  .service-block ul {
-    margin-left: 30px;
-  }
-
-  .service-block li {
-    font-size: 24px;
-  }
-
-  .slider-window {
-    width: 90vw;
-    height: 500px;
-  }
-
-  .cta {
-    flex-direction: column;
-
-    gap: 20px;
-
-    text-align: center;
-
-    padding: 30px 40px;
-  }
-
-  .cta p {
-    font-size: 28px;
-  }
-
-  .reviews {
-    margin: 40px;
-  }
-}
-
-/* =========================
-   LOGIN LAYOUT
-   ========================= */
+ /* логин страница*/
 
 .login-page {
   min-height: calc(100vh - 120px);
@@ -1186,23 +722,42 @@ nav a {
   margin: 0 auto;
 }
 
-/* =========================
-   TITLE
-   ========================= */
+/* логин ввод */
 
-.login-wrapper h1 {
-  font-size: 40px;
-  margin-bottom: 30px;
+.login-wrapper {
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: 0 10px 35px rgba(0,0,0,0.05);
+  border: 1px solid #f3f3f3;
 }
 
-/* =========================
-   FORM
-   ========================= */
+/* форма */
 
 #loginForm {
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+.password-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.password-wrapper input {
+  width: 100%;
+  padding-right: 45px;
+  box-sizing: border-box;
+}
+
+.eye {
+  position: absolute;
+  right: 15px;
+  top: 45%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 25px;
+  user-select: none;
+  color: #e5c96b;
 }
 
 /* INPUT */
@@ -1213,34 +768,35 @@ nav a {
   padding: 0 20px;
   font-size: 18px;
   font-family: inherit;
-  outline: none;
-  transition: 0.2s ease;
+  outline: none;  
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 #loginForm input:focus {
   border-color: #e5c96b;
+    border-color: #e5c96b;
+    box-shadow: 0 0 0 4px rgba(229, 201, 107, 0.15);
 }
 
 /* BUTTON */
 #loginForm button {
   width: 100%;
   height: 65px;
-
   border: none;
   border-radius: 12px;
-
   background: #e5c96b;
   color: #222;
-
   font-size: 24px;
   font-family: inherit;
-
   cursor: pointer;
   transition: 0.2s ease;
 }
 
 #loginForm button:hover {
   transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(229, 201, 107, 0.35);
 }
 
 /* ERROR */
@@ -1250,107 +806,16 @@ nav a {
   min-height: 20px;
 }
 
-/* =========================
-   TABLET
-   ========================= */
+/* КОНЕЦ ЛОГИНА*/
 
-@media (max-width: 1024px) {
-
-  .login-wrapper {
-    max-width: 500px;
-    padding: 30px;
-  }
-
-  .login-wrapper h1 {
-    font-size: 34px;
-  }
-
-  #loginForm input {
-    height: 58px;
-    font-size: 17px;
-  }
-
-  #loginForm button {
-    height: 60px;
-    font-size: 20px;
-  }
-}
-
-/* =========================
-   MOBILE
-   ========================= */
-
-@media (max-width: 768px) {
-
-  .header {
-    padding: 20px;
-  }
-
-  .logo {
-    width: 160px;
-  }
-
-  .login-page {
-    min-height: calc(100vh - 80px);
-  }
-
-  .login-wrapper {
-    max-width: 420px;
-    padding: 20px;
-  }
-
-  .login-wrapper h1 {
-    font-size: 28px;
-  }
-
-  #loginForm input {
-    height: 52px;
-    font-size: 16px;
-  }
-
-  #loginForm button {
-    height: 55px;
-    font-size: 18px;
-  }
-
-  #error {
-    font-size: 14px;
-  }
-}
-
-/* =========================
-   SMALL MOBILE
-   ========================= */
-
-@media (max-width: 480px) {
-
-  .login-wrapper {
-    padding: 15px;
-  }
-
-  .login-wrapper h1 {
-    font-size: 24px;
-  }
-
-  #loginForm input {
-    height: 50px;
-    font-size: 15px;
-  }
-
-  #loginForm button {
-    height: 50px;
-    font-size: 16px;
-  }
-}
-
-/* PANEL */
+/* лк мастеров */
 .panel {
   max-width: 900px;
   margin: 60px auto;
   padding: 20px;
 }
 
-h1 {
+.panel h1 {
   text-align: center;
   margin-bottom: 40px;
 }
@@ -1367,16 +832,13 @@ h1 {
 }
 
 /* INPUTS */
-input {
-  width: 100%;
+.master-content input {
+  width: auto;
   height: 50px;
   margin-bottom: 10px;
-
   padding: 0 15px;
-
   border: 2px solid #ddd;
   border-radius: 10px;
-
   font-family: inherit;
   font-size: 16px;
 }
@@ -1393,26 +855,474 @@ input {
 }
 
 /* BUTTONS */
-.add-btn {
-  background: #eee;
-  border: none;
-  padding: 10px;
-  border-radius: 8px;
-  cursor: pointer;
-}
 
 .save-btn {
   width: 100%;
   height: 60px;
-
   background: #e5c96b;
   border: none;
   border-radius: 12px;
-
   font-size: 20px;
   cursor: pointer;
 }
 
 .save-btn:hover {
   transform: translateY(-2px);
+}
+
+/* SERVICES PANEL */
+
+.service-form {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+.service-form input {
+  flex: 1;
+}
+
+.gold-btn {
+  height: 50px;
+  padding: 0 22px;
+  border: none;
+  border-radius: 10px;
+  background: #e5c96b;
+  color: #111;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  transition: 0.2s ease;
+}
+
+.gold-btn:hover {
+  transform: translateY(-2px);
+}
+
+.service-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.service-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+}
+
+.service-info {
+  display: flex;
+  gap: 12px;
+  flex: 1;
+}
+
+.service-input {
+  height: 46px;
+}
+
+.service-input.price {
+  max-width: 160px;
+}
+
+.delete-service {
+  width: 42px;
+  height: 42px;
+  border: none;
+  border-radius: 10px;
+  background: #fff0f0;
+  color: #c40000;
+  cursor: pointer;
+  font-size: 18px;
+  transition: 0.2s ease;
+}
+
+.delete-service:hover {
+  background: #ffdede;
+}
+
+/* MASTER PANEL — BASE */
+
+.master-layout {
+  display: flex;
+  min-height: 100vh;
+  background: #fafafa;
+  font-family: 'Arodora', sans-serif;
+}
+
+/* SIDEBAR */
+
+.master-sidebar {
+  width: 260px;
+  background: #fff;
+  border-right: 1px solid #eee;
+  padding: 30px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.side-btn {
+  width: 100%;
+  height: 54px;
+  border-radius: 12px;
+  border: 1px solid #eee;
+  background: #fff;
+  color: #222;
+  font-size: 16px;
+  font-family: inherit;
+  text-align: left;
+  padding: 0 16px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.side-btn:hover {
+  border-color: #e5c96b;
+  background: #fffdf5;
+  transform: translateX(3px);
+}
+
+.side-btn.active {
+  background: #e5c96b;
+  border-color: #e5c96b;
+  color: #111;
+}
+
+/* CONTENT AREA*/
+
+.master-content {
+  flex: 1;
+  padding: 30px 40px;
+}
+
+/* HEADER */
+
+.master-header .logo {
+  width: 170px;
+  height: auto;
+  object-fit: contain;
+}
+.master-header {
+  height: 120px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+.menu-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.menu-btn {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #eee;
+  background: #fff;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.menu-dropdown {
+  position: absolute;
+  right: 0;
+  top: 50px;
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 14px;
+  padding: 10px;
+  min-width: 180px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  z-index: 999;
+
+}
+
+.menu-dropdown a,
+.menu-dropdown button {
+  text-align: left;
+  font-family: inherit;
+  padding: 15px 5px;
+  text-decoration: none;
+}
+
+.menu-dropdown a:hover,
+.menu-dropdown button:hover {
+  background: #f5f5f5;
+}
+
+/* TITLE */
+.master-title {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* RIGHT BLOCK */
+.master-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* NOTIFICATION BUTTON */
+
+.icon-btn {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  border: 1px solid #eee;
+  background: #fff;
+  cursor: pointer;
+  font-size: 18px;
+  transition: 0.2s ease;
+}
+
+.icon-btn:hover {
+  border-color: #e5c96b;
+  background: #f7f7f7;
+  transform: translateY(-1px);
+}
+/* NOTIFICATION BUTTON */
+
+.notif-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  border: 1px solid #eee;
+  background: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: 0.2s ease;
+}
+
+/* hover */
+.notif-btn:hover {
+  background: #f7f7f7;
+  border-color: #e5c96b;
+  transform: translateY(-1px);
+}
+
+/* ICON */
+
+.notif-icon {
+  width: 18px;
+  height: 18px;
+  position: relative;
+  display: block;
+}
+
+/* bell shape */
+.notif-icon::before {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 12px;
+  border: 2px solid #111;
+  border-bottom: none;
+  border-radius: 10px 10px 0 0;
+}
+
+/* bell body */
+.notif-icon::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 4px;
+  background: #111;
+  border-radius: 10px;
+}
+
+/* RED DOT (optional) */
+
+.notif-btn::after {
+  content: "";
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 8px;
+  height: 8px;
+  background: red;
+  border-radius: 50%;
+  display: none; /* когда будут уведомления */
+}
+
+/* если есть уведомления */
+.notif-btn.has-notifications::after {
+  display: block;
+}
+
+/* PROFILE */
+
+.master-profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 12px;
+  border-radius: 12px;
+  background: #f5f5f5;
+}
+
+.master-profile img {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #e5c96b;
+}
+
+/* LOGOUT BUTTON */
+
+#logoutBtn {
+  height: 42px;
+  padding: 0 18px;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  background: #fff;
+  font-family: inherit;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+#logoutBtn:hover {
+  border-color: #e5c96b;
+  background: #fffdf5;
+  color: #111;
+}
+
+/* TABS */
+
+.tab {
+  display: none;
+  animation: fade 0.25s ease;
+}
+
+.tab.active {
+  display: block;
+}
+
+@keyframes fade {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* BOOKINGS TABLE */
+
+.bookings-table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden; 
+  box-shadow: 0 5px 20px rgba(0,0,0,0.04);
+}
+
+.bookings-table th {
+  text-align: left;
+  padding: 14px;
+  background: #f7f7f7;
+  font-weight: 600;
+}
+
+.bookings-table td {
+  padding: 14px;
+  border-top: 1px solid #eee;
+}
+
+/* DELETE BUTTON*/
+
+.delete-btn {
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background: #ffecec;
+  color: #c40000;
+  font-size: 13px;
+}
+
+.delete-btn:hover {
+  background: #ffd6d6;
+}
+
+/* SUMMARY CARDS */
+
+.summary {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.summary-card {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+}
+
+.summary-card h3 {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+}
+
+.summary-card p {
+  font-size: 26px;
+  font-weight: 600;
+  margin: 10px 0 0;
+}
+
+/* ADD BUTTON */
+
+.add-btn {
+  background: #e5c96b;
+  border: none;
+  padding: 12px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.2s ease;
+}
+
+.add-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* DATE INPUT */
+
+.date-bar input {
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-family: inherit;
 }

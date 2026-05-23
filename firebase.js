@@ -1,0 +1,1 @@
+export const db = null; // позже Firebase instance

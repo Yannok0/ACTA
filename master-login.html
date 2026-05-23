@@ -5,42 +5,40 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Вход мастера</title>
   <link rel="stylesheet" href="style.css">
-    </head>
-<body>
+  </head>
+  <style>
+   
+  </style>
+<body data-page="login">
 <header class="header">
   <img src="img/лого.png" class="logo">
+    <nav>
+    <a href="index.html#about">О нас</a>
+    <a href="index.html#services">Услуги</a>
+    <a href="booking.html">Записаться</a>
+    <a href="master-login.html">Кабинет мастера</a>
+  </nav>
 </header>
 
   <div class="login-wrapper">
 
     <h1>Вход в кабинет</h1>
-
     <form id="loginForm">
-
       <input
         type="text"
         id="login"
-        placeholder="Логин"
-      >
-
-      <input
-        type="password"
-        id="password"
-        placeholder="Пароль"
-      >
-
-      <button type="submit">
-        Войти
-      </button>
-
+        placeholder="Логин">
+    <div class="password-wrapper">
+    <input type="password" id="password" placeholder="Пароль">
+    <span id="togglePassword" class="eye">👁</span>
+    </div>
+      <button type="submit">Войти</button>
+      
       <p id="error"></p>
-
     </form>
-
   </div>
 
-  <!-- общий JS -->
-  <script src="script.js"></script>
+  <script src="script2.js"></script>
 
 </body>
 </html>
