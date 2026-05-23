@@ -1083,7 +1083,6 @@ nav a {
   display: flex;
 }
 
-
 /* TITLE */
 .master-title {
   font-size: 20px;
@@ -1344,4 +1343,154 @@ nav a {
   border-radius: 10px;
   border: 1px solid #ddd;
   font-family: inherit;
+}
+
+/* КОНЕЦ ЛК*/
+
+
+/* =========================
+   GLOBAL RESPONSIVE SYSTEM
+========================= */
+
+/* чтобы не было переполнений */
+* {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* контейнеры не вылезают */
+body {
+  overflow-x: hidden;
+}
+
+/* =========================
+   TABLET (<= 900px)
+========================= */
+@media (max-width: 900px) {
+
+  /* TEXT */
+  h1 {
+    font-size: 32px !important;
+  }
+
+  h2 {
+    font-size: 24px !important;
+  }
+
+  p {
+    font-size: 16px !important;
+  }
+
+  /* HEADER */
+  .header {
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 15px;
+  }
+
+  nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  /* CARDS / GRID */
+  .cards {
+    flex-direction: column;
+  }
+
+  .card-option {
+    width: 100%;
+    min-width: unset;
+  }
+
+  /* BUTTONS */
+  button {
+    font-size: 16px !important;
+  }
+
+  /* FORMS */
+  input, textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* =========================
+   MOBILE (<= 480px)
+========================= */
+@media (max-width: 480px) {
+
+  /* TEXT */
+  h1 {
+    font-size: 24px !important;
+  }
+
+  h2 {
+    font-size: 20px !important;
+  }
+
+  p {
+    font-size: 14px !important;
+  }
+
+  /* HEADER */
+  .header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  nav {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  nav a {
+    padding: 8px 0;
+  }
+
+  /* SPACING */
+  .booking-page,
+  .panel,
+  .master-content {
+    padding: 15px !important;
+    margin: 20px auto !important;
+  }
+
+  /* CARDS */
+  .card-option {
+    padding: 15px;
+  }
+
+  /* BUTTONS */
+  button {
+    width: 100%;
+  }
+
+  /* TABLE FIX (панель мастера) */
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  /* TIME BUTTONS */
+  .time-btn {
+    width: 100% !important;
+  }
+
+  /* SIDEBAR (панель мастера) */
+  .master-sidebar {
+    flex-direction: row !important;
+    overflow-x: auto;
+    width: 100%;
+  }
+
+  .side-btn {
+    white-space: nowrap;
+  }
 }
