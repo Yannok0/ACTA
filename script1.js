@@ -41,7 +41,9 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+// =========================
 // SERVICES MAP (UI названия)
+// =========================
 
 const SERVICES_MAP = {
   consultation: "Консультация",
@@ -49,7 +51,11 @@ const SERVICES_MAP = {
   haircut: "Стрижка",
   care: "Уход"
 };
-
+const CONSULTATION = {
+  id: "consultation",
+  name: "Консультация",
+  duration: 15
+};
 
 // =========================
 // BOOKING STATE
@@ -59,6 +65,7 @@ const booking = {
   master: null,
   service: null,
   subservice: null,
+  duration: null,
   date: null,
   time: null,
   client: {
@@ -71,53 +78,48 @@ const booking = {
 // =========================
 // MASTERS DATA
 // =========================
-// =========================
-  // MASTERS DATA (TEMP ONLY)
-  // =========================
-
   const masters = {
     tatyana: {
       name: "Татьяна Агламутдинова",
       services: {
-        coloring: ["Выход из цвета в технику", "Коррекция техники в топовой зоне", "Мелирование корней до 5 см", 
-          "Обесцвечивание корней до 3 см (длинные волосы)", "Обесцвечивание корней до 3см (средние волосы до плеч)", "Обесцвечивание корней до 3 см (короткие волосы)",
-           "Однотонное окрашивание (длинные волосы)", "Однотонное окрашивание (средние волосы до плеч)", "Однотонное окрашивание (короткие волосы)",
-          "Окрашивание корней до 3 см, однотонное окрашивание", "Осветление без порошка (спец блонд, корни до 1 см)","Рельефное окрашивание (средние волосы до плеч)", "Рельефное окрашивание (длинные волосы)",
-        "AirTouch техника (длинные волосы)", "AirTouch техника (средние волосы до плеч)", "Мелирование (короткие волосы)", "Тотал блонд (длинные волосы)", "Тотал блонд (средние волосы до плеч)",
-      "Химическая завивка (средние волосы до плеч)"],
-        haircut: ["Женская стрижка + уход", "Стрижка челки"],
-        care: ["4D-протезирование", "Ревитализация", "Шёлк-эффект"]
+        coloring: [{name:"Выход из цвета в технику", duration: 480}, {name:"Коррекция техники в топовой зоне", duration: 180},{name:"Мелирование корней до 5 см", duration: 210},
+        {name:"Обесцвечивание корней до 3 см (длинные волосы)", duration: 300},{name:"Обесцвечивание корней до 3см (средние волосы до плеч)", duration: 270}, 
+        {name:"Обесцвечивание корней до 3 см (короткие волосы)", duration: 270},{name:"Однотонное окрашивание (длинные волосы)", duration: 120},{name:"Однотонное окрашивание (средние волосы до плеч)", duration: 120},
+        {name:"Однотонное окрашивание (короткие волосы)", duration: 90}, {name:"Окрашивание корней до 3 см, однотонное окрашивание", duration: 90},
+        {name:"Осветление без порошка (спец блонд, корни до 1 см)", duration: 90},{name:"Рельефное окрашивание (средние волосы до плеч)", duration: 300},
+        {name:"Рельефное окрашивание (длинные волосы)", duration: 360},{name:"AirTouch техника (длинные волосы)", duration: 390},{name:"AirTouch техника (средние волосы до плеч)", duration: 360},
+        {name:"Мелирование (короткие волосы)", duration: 210},{name:"Тотал блонд (длинные волосы)", duration: 360},{name:"Тотал блонд (средние волосы до плеч)", duration: 330},
+        {name:"Химическая завивка (средние волосы до плеч)", duration: 150},], 
+        haircut: [{name:"Женская стрижка + уход", duration: 60}, {name: "Стрижка челки", duration: 15}],
+        care: [{ name:"4D-протезирование", duration: 90}, {name:"Ревитализация", duration: 90}, {name:"Шёлк-эффект", duration: 60}]
       }
     },
     angelina: {
       name: "Ангелина Гилязутдинова",
       services: {
-        coloring: ["Выход из темного в технику", "Снятие оттенка на 1-2 тона (из темного в светлый)",
-           "Обесцвечивание корней до 3 см", "Окрашивание корней в тон", "Осветление корней до 1 см (спец блонд)",
-          "Тотал блонд (длинные волосы)", "Тотал блонд (средние волосы до плеч)", "Тотал блонд (короткие волосы)",
-          "AirTouch (длинные волосы)", "AirTouch (средние волосы до плеч)","Комуфляж седины + осветление прядей", 
-          "Мелирование (короткие волосы)", "Матирование", "Контуринг", "Контуринг + техника на макушке", "Тонирование",
-          "Однотонное окрашивание (средние волосы до плеч)", "Рельефное окрашивание", "Скрытое окрашивание"],
-        haircut: ["Подравнивание длины одним срезом + уход (длинные волосы)", "Мужская стрижка", "Стрижка челки"],
-        care: ["Трихоскопия + пилинг", "4D протезирование", "Ревитализация", "Шёлк-эффект"]
+        coloring: [{name:"Выход из темного в технику", duration: 480}, {name:"Снятие оттенка на 1-2 тона (из темного в светлый)", duration:300},{name:"Обесцвечивание корней до 3 см", duration:180},{name:"Окрашивание корней в тон", duration:120},
+        {name:"Осветление корней до 1 см (спец блонд)", duration:150},{name:"Тотал блонд (длинные волосы)", duration:360},{name:"Тотал блонд (средние волосы до плеч)", duration:300},{name:"Тотал блонд (короткие волосы)", duration:210},
+        {name:"AirTouch (длинные волосы)", duration:360},{name:"AirTouch (средние волосы до плеч)", duration:300},{name:"Комуфляж седины + осветление прядей", duration:180},{name:"Мелирование (средние волосы)", duration:240},
+        {name:"Матирование", duration:150},{name:"Контуринг", duration:180},{name:"Контуринг + техника на макушке", duration:270},{name:"Тонирование", duration:90},
+        {name:"Однотонное окрашивание (средние волосы до плеч)", duration:150},{name:"Рельефное окрашивание", duration:300},{name:"Скрытое окрашивание", duration:180},],
+        haircut: [{name:"Подравнивание длины одним срезом + уход (длинные волосы)", duration: 60}, {name:"Мужская стрижка", duration: 60}, {name: "Стрижка челки", duration: 30}],
+        care: [{name:"Трихоскопия + пилинг", duration: 90}, { name:"4D-протезирование", duration: 90}, {name:"Ревитализация", duration: 90}, {name:"Шёлк-эффект", duration: 60}]
       }
     },
     anastasia: {
       name: "Анастасия Буторина",
       services: {
-        coloring:["Снятие оттенка на 1-2 тона (из темного в светлый)",
-           "Обесцвечивание корней до 3 см", "Окрашивание корней в тон", "Осветление корней до 1 см (спец блонд)",
-          "Тотал блонд (длинные волосы)", "Тотал блонд (средние волосы до плеч)", "Тотал блонд (короткие волосы)",
-          "AirTouch (длинные волосы)", "AirTouch (средние волосы до плеч)","Комуфляж седины + осветление прядей", 
-          "Мелирование (короткие волосы)", "Матирование", "Контуринг", "Контуринг + техника на макушке", "Тонирование",
-          "Однотонное окрашивание (средние волосы до плеч)", "Рельефное окрашивание", "Скрытое окрашивание"],
-        haircut: ["Подравнивание длины одним срезом + уход (длинные волосы)", "Мужская стрижка"],
-        care: ["Ботокс", "Кератин", "4D-протезирование", "Ревитализация", "Шёлк-эффект", "Укладка + прическа", "Макияж"]
+        coloring:[{name:"Снятие оттенка на 1-2 тона (из темного в светлый)", duration:300},{name:"Обесцвечивание корней до 3 см", duration:180},{name:"Окрашивание корней в тон", duration:120},
+        {name:"Осветление корней до 1 см (спец блонд)", duration:150},{name:"Тотал блонд (длинные волосы)", duration:360},{name:"Тотал блонд (средние волосы до плеч)", duration:300},{name:"Тотал блонд (короткие волосы)", duration:210},
+        {name:"AirTouch (длинные волосы)", duration:360},{name:"AirTouch (средние волосы до плеч)", duration:300},{name:"Комуфляж седины + осветление прядей", duration:180},{name:"Мелирование (средние волосы)", duration:240},
+        {name:"Матирование", duration:150},{name:"Контуринг", duration:180},{name:"Контуринг + техника на макушке", duration:270},{name:"Тонирование", duration:90},
+        {name:"Однотонное окрашивание (средние волосы до плеч)", duration:150},{name:"Рельефное окрашивание", duration:300},{name:"Скрытое окрашивание", duration:180},],
+        haircut: [{name:"Подравнивание длины одним срезом + уход (длинные волосы)", duration: 60}, {name:"Мужская стрижка", duration: 60}],
+        care: [{name:"Ботокс", duration: 180}, {name:"Кератин", duration: 180}, { name:"4D-протезирование", duration: 90}, {name:"Ревитализация", duration: 90}, {name:"Шёлк-эффект", duration: 60}, {name:"Укладка + прическа", duration: 60},
+          {name:"Макияж", duration: 75} ]
       }
     }
   };
-
-
 
 // =========================
 // ELEMENTS
@@ -129,8 +131,6 @@ const dateInput = document.getElementById("dateInput");
 
 const serviceCards = document.querySelectorAll(".booking-service")
 const masterCards = document.querySelectorAll(".master-card");
-const timeBtns = document.querySelectorAll(".time-btn");
-
 
 // =========================
 // URL MASTER
@@ -162,9 +162,6 @@ function syncUI() {
     card.classList.toggle("active", card.dataset.service === booking.service);
   });
 
-  timeBtns.forEach(btn => {
-    btn.classList.toggle("active", btn.textContent.trim() === booking.time);
-  });
 }
 
 
@@ -177,6 +174,8 @@ serviceCards.forEach(card => {
 
     booking.service = card.dataset.service;
     booking.subservice = null;
+    booking.duration = null;
+    booking.time = null;
 
     renderSubservices();
     syncUI();
@@ -194,9 +193,11 @@ masterCards.forEach(card => {
 
     booking.service = null;
     booking.subservice = null;
+    booking.duration = null;
+    booking.time = null;
 
     renderSubservices();
-    syncUI(); // ← это важно
+    syncUI();
 
   });
 });
@@ -218,13 +219,16 @@ function renderSubservices() {
 
   // Консультация без подуслуг
   if (booking.service === "consultation") {
+    
     booking.subservice = null;
-
+      booking.duration = CONSULTATION.duration;
     subservicesContainer.innerHTML =
       "<p style='opacity:.6'>Консультация не требует выбора подуслуг</p>";
 
+        generateTimeSlots();
     return;
   }
+
 
   const list = masters?.[booking.master]?.services?.[booking.service];
 
@@ -234,21 +238,33 @@ function renderSubservices() {
     return;
   }
 
-  list.forEach(item => {
-    const btn = document.createElement("button");
-    btn.className = "subservice-btn";
-    btn.textContent = item;
+ list.forEach(item => {
 
-    btn.addEventListener("click", () => {
-      document.querySelectorAll(".subservice-btn")
-        .forEach(b => b.classList.remove("active"));
+  const btn = document.createElement("button");
 
-      btn.classList.add("active");
-      booking.subservice = item;
-    });
+  btn.className = "subservice-btn";
 
-    subservicesContainer.appendChild(btn);
+  btn.textContent = item.name;
+
+  btn.addEventListener("click", () => {
+
+    document
+      .querySelectorAll(".subservice-btn")
+      .forEach(b => b.classList.remove("active"));
+
+    btn.classList.add("active");
+
+    booking.subservice = item.name;
+
+    booking.duration = item.duration;
+
+    booking.time = null;
+
+    generateTimeSlots(); 
   });
+  subservicesContainer.appendChild(btn);
+
+});
 }
 
 
@@ -262,6 +278,8 @@ if (dateInput) {
 
   dateInput.addEventListener("input", e => {
     booking.date = e.target.value;
+    booking.time = null;
+    generateTimeSlots();
   });
 }
 
@@ -269,15 +287,99 @@ if (dateInput) {
 // =========================
 // TIME
 // =========================
+const timeContainer = document.getElementById("timeSlots");
 
-timeBtns.forEach(btn => {
-  btn.addEventListener("click", () => {
-    booking.time = btn.textContent.trim();
-    syncUI();
-  });
-});
+function generateTimeSlots() {
+  if (!timeContainer) return;
 
+  timeContainer.innerHTML = "";
 
+  if (
+    !booking.master ||
+    !booking.date ||
+    !booking.service ||
+    !booking.duration
+  ) {
+    timeContainer.innerHTML =
+      "<p style='opacity:.6'>Выберите услугу и дату</p>";
+    return;
+  }
+
+  const schedule =
+    JSON.parse(localStorage.getItem(`schedule_${booking.master}`)) || {};
+
+  const date = new Date(booking.date);
+  const dayIndex = date.getDay();
+
+  const DAYS = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
+  const dayKey = DAYS[dayIndex];
+
+  const daySchedule = schedule[dayKey];
+
+  if (!daySchedule || daySchedule.closed) {
+    timeContainer.innerHTML =
+      "<p style='opacity:.6'>Мастер не работает</p>";
+    return;
+  }
+
+  const [startHour, startMinute] = daySchedule.start.split(":").map(Number);
+  const [endHour, endMinute] = daySchedule.end.split(":").map(Number);
+
+  const startTotal = startHour * 60 + startMinute;
+  const endTotal = endHour * 60 + endMinute;
+
+  const bookings = JSON.parse(localStorage.getItem("bookings")) || [];
+
+  const masterBookings = bookings.filter(
+    b => b.masterId === booking.master && b.date === booking.date
+  );
+
+  const now = new Date();
+  const isToday = booking.date === now.toISOString().split("T")[0];
+
+  for (let time = startTotal; time + booking.duration <= endTotal; time += 30) {
+
+    // ❗️ УБИРАЕМ ПРОШЕДШЕЕ ВРЕМЯ
+    if (isToday) {
+      const currentMinutes = now.getHours() * 60 + now.getMinutes();
+      if (time <= currentMinutes) continue;
+    }
+
+    // ❗️ КОНФЛИКТЫ
+    const hasConflict = masterBookings.some(b => {
+      const [bh, bm] = b.time.split(":").map(Number);
+      const start = bh * 60 + bm;
+      const end = start + (b.duration || 60);
+
+      return time < end && time + booking.duration > start;
+    });
+
+    if (hasConflict) continue;
+
+    const hours = String(Math.floor(time / 60)).padStart(2, "0");
+    const minutes = String(time % 60).padStart(2, "0");
+    const formatted = `${hours}:${minutes}`;
+
+    const btn = document.createElement("button");
+    btn.className = "time-btn";
+    btn.textContent = formatted;
+
+    btn.addEventListener("click", () => {
+      document.querySelectorAll(".time-btn").forEach(b =>
+        b.classList.remove("active")
+      );
+      btn.classList.add("active");
+      booking.time = formatted;
+    });
+
+    timeContainer.appendChild(btn);
+  }
+
+  if (!timeContainer.innerHTML.trim()) {
+    timeContainer.innerHTML =
+      "<p style='opacity:.6'>Нет свободных окон</p>";
+  }
+}
 // =========================
 // SUBMIT
 // =========================
@@ -296,11 +398,14 @@ document.querySelector(".submit-btn")?.addEventListener("click", () => {
     id: Date.now(),
 
     masterId: booking.master,
-    serviceId: booking.service,
+    serviceId: typeof booking.service === "object"
+  ? booking.service.id || booking.service.name
+  : booking.service,
     subservice: booking.subservice || null,
 
     date: booking.date,
     time: booking.time,
+    duration: booking.duration,
 
     client: {
       name,
@@ -311,10 +416,74 @@ document.querySelector(".submit-btn")?.addEventListener("click", () => {
     createdAt: new Date().toISOString()
   };
 
-  const all = JSON.parse(localStorage.getItem("bookings")) || [];
-  all.push(newBooking);
+const all = JSON.parse(localStorage.getItem("bookings")) || [];
+all.push(newBooking);
 
-  localStorage.setItem("bookings", JSON.stringify(all));
+localStorage.setItem("bookings", JSON.stringify(all));
 
-  alert("Запись создана!");
-});
+showBookingSuccess(newBooking);
+booking.service = null;
+booking.subservice = null;
+booking.duration = null;
+booking.date = null;
+booking.time = null;
+dateInput.value = ""; 
+document.querySelector('input[type="text"]').value = "";
+document.querySelector('input[type="tel"]').value = "";
+
+generateTimeSlots();
+renderSubservices();
+syncUI();
+
+function showBookingSuccess(booking) {
+
+  const serviceName =
+    SERVICES_MAP[booking.serviceId] || booking.serviceId;
+
+  const modal = document.createElement("div");
+
+  modal.style.cssText = `
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+  `;
+
+  modal.innerHTML = `
+    <div style="
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+      max-width: 340px;
+    ">
+      <h3>Запись подтверждена</h3>
+
+      <p>
+        Вы успешно записались к <b>${masters?.[booking.masterId]?.name || ""}</b><br><br>
+
+        Услуга: <b>${serviceName}</b><br>
+        ${booking.subservice ? `(${booking.subservice})<br>` : ""}
+
+        <br>
+        Дата: ${booking.date}<br>
+        Время: ${booking.time}
+      </p>
+
+      <p>
+        Ждём вас по адресу: Полевской, Ялунина 15
+      </p>
+
+      <button id="closePopup">OK</button>
+    </div>
+  `;
+
+  document.body.appendChild(modal);
+
+  modal.querySelector("#closePopup").onclick = () => {
+    modal.remove();
+  };
+}})
