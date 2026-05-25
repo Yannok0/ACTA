@@ -644,25 +644,37 @@ nav a {
   flex-wrap: wrap;
   gap: 15px;
 }
+#timeSlots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 15px;
+}
 
 .time-btn {
-  width: 110px;
-  height: 50px;
-  border: none;
+  padding: 8px 14px;
   border-radius: 10px;
-  background: #f1f1f1;
+  border: 1px solid #d6d6d6;
+  background: white;
   cursor: pointer;
-  font-size: 18px;
-  font-family: inherit;
-  transition: 0.2s ease;
+
+  width: auto;
+  min-width: unset;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  transition: .2s;
 }
 
 .time-btn:hover {
-  background: #e5c96b;
+  border-color: #c7a86b;
 }
 
 .time-btn.active {
-  background: #e5c96b;
+  background: #c7a86b;
+  color: white;
+  border-color: #c7a86b;
 }
 
 /* форма подтверждения */
@@ -1320,6 +1332,37 @@ nav a {
   margin: 10px 0 0;
 }
 
+#nextBookings {
+  display: flex;
+  flex-direction: column;
+  gap: 12px; /* вот это делает разделение */
+}
+
+/* КАЖДАЯ запись */
+.next-item {
+  background: #f7f7f7;
+  border-radius: 12px;
+  padding: 12px;
+  border: 1px solid #eee;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* аккуратные стили внутри */
+.next-time {
+  font-weight: 600;
+}
+
+.next-name {
+  font-weight: 500;
+}
+
+.next-service {
+  font-size: 13px;
+  opacity: 0.8;
+}
+
 /* ADD BUTTON */
 
 .add-btn {
@@ -1343,6 +1386,34 @@ nav a {
   border-radius: 10px;
   border: 1px solid #ddd;
   font-family: inherit;
+}
+
+/*для расписания*/
+
+.day-block {
+  margin-bottom: 16px;
+}
+
+.slots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.slot-btn {
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background: white;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.slot-btn.active {
+  background: #caa46a;
+  color: white;
+  border-color: #caa46a;
 }
 
 /* КОНЕЦ ЛК*/
