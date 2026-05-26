@@ -6,10 +6,7 @@
 <title>Архитектура Цвета - онлайн запись</title>
 <link rel="stylesheet" href="style.css">
 </head>
-<style>
-  
 
-</style>
 <body>
 
 <header class="header">
@@ -23,19 +20,15 @@
 </header>
 
   <section class="booking-page">
-
     <div class="booking-title">
     <h1 id="booking-title">Онлайн запись</h1>
       <p>Выберите услугу и удобное время</p>
     </div>
-
     <!-- УСЛУГИ -->
-<div class="booking-step">
+    <div class="booking-step">
+    <h2>1. Выберите услугу</h2>
 
-  <h2>1. Выберите услугу</h2>
-
-  <div class="cards">
-
+    <div class="cards">
     <div class="card-option booking-service" data-service="consultation">
       <h3>Консультация</h3>
       <p>Диагностика Вашего запроса займет 15 минут времени, по необходимости сделаем тест-прядь</p>
@@ -55,24 +48,17 @@
       <h3>Уход</h3>
       <p>Восстановление волос и другие уходовые процедуры.</p>
     </div>
-
   </div>
 
   <!-- ПОДУСЛУГИ -->
   <div class="subservices" id="subservices"></div>
 
-</div>
 
-    </div>
-
-    <!-- МАСТЕР -->
+    <!-- МАСТЕРА -->
 
     <div class="booking-step">
-
-      <h2>2. Мастер</h2>
-
+     <h2>2. Мастер</h2>
       <div id="master-selection">
-
         <div class="cards">
 
           <div class="card-option master-card" data-master="tatyana">
@@ -88,50 +74,32 @@
           </div>
 
         </div>
-
       </div>
-
     </div>
 
     <!-- ДАТА -->
-
     <div class="booking-step">
-
       <h2>3. Выберите дату</h2>
-
       <input type="date" class="date-input" id="dateInput">
-
     </div>
 
     <!-- ВРЕМЯ -->
-
     <div class="booking-step">
 
       <h2>4. Время</h2>
     <div id="timeSlots"></div>
-
     </div>
 
-    <!-- КОНТАКТЫ -->
-
+    <!-- ФОРМА -->
     <div class="booking-step">
-
       <h2>5. Ваши данные</h2>
-
       <div class="booking-form">
-
         <input type="text" placeholder="Ваше имя">
         <input type="tel" placeholder="Телефон">
-
         <button class="submit-btn">Подтвердить запись</button>
-
       </div>
-
     </div>
-
   </section>
-
-  <script src="script1.js"></script>
-
+  <script src="booking.js"></script>
 </body>
 </html>

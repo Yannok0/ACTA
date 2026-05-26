@@ -64,7 +64,7 @@
 </section>
 
 <!-- МАСТЕРА -->
-<section class="masters" id="masters">
+<section class="masters">
   <h2>МАСТЕРА</h2>
 
   <div class="master main">
@@ -126,7 +126,7 @@
   </div>
 </section>
 
-<section class="portfolio" id="portfolio">
+<section class="portfolio">
   <h2>Примеры работ</h2>
 
   <div class="slider">
@@ -185,7 +185,48 @@
 
 </footer>
 
-<script src="script1.js"></script>
+<script>
+  // СЛАЙДЕР ПОРТФОЛИО
+
+let index = 0;
+let autoSlide;
+
+function showSlide() {
+  const slides = document.getElementById("slides");
+  const windowEl = document.querySelector(".slider-window");
+  if (!slides || !windowEl) return;
+
+  const width = windowEl.clientWidth;
+  slides.style.transform = `translateX(${-index * width}px)`;
+}
+
+function nextSlide() {
+  const count = document.querySelectorAll(".slides img").length;
+  if (count === 0) return;
+
+  index = (index + 1) % count;
+  showSlide();
+}
+
+function startAutoSlide() {
+  autoSlide = setInterval(nextSlide, 4000);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  startAutoSlide();
+  showSlide();
+
+  const slider = document.querySelector(".slider");
+
+  if (slider) {
+    slider.addEventListener("mouseenter", () => clearInterval(autoSlide));
+    slider.addEventListener("mouseleave", startAutoSlide);
+  }
+
+  window.addEventListener("resize", showSlide);
+});
+
+</script>
 
 </body>
 </html>
