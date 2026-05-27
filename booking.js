@@ -29,6 +29,16 @@ const booking = {
   time: null,
   client: { name: "", phone: "" }
 };
+const store = {
+  get: (key) => {
+    try {
+      return JSON.parse(localStorage.getItem(key));
+    } catch {
+      return null;
+    }
+  },
+  set: (key, val) => localStorage.setItem(key, JSON.stringify(val))
+};
 
 // normalize
 const norm = v => (v || "").toLowerCase().trim();
@@ -38,7 +48,7 @@ function safeParse(key) {
   try {
     return JSON.parse(localStorage.getItem(key));
   } catch {
-    return null;
+    return [];
   }
 }
 
@@ -284,55 +294,66 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
   // ================= SUBMIT =================
-  document.querySelector(".submit-btn")?.addEventListener("click", () => {
+document.querySelector(".submit-btn")?.addEventListener("click", () => {
 
-    const name = document.querySelector('input[type="text"]')?.value?.trim();
-    const phone = document.querySelector('input[type="tel"]')?.value?.trim();
+  const name = document.querySelector('input[type="text"]')?.value?.trim();
+  const phone = document.querySelector('input[type="tel"]')?.value?.trim();
 
-    if (!booking.service || !booking.master || !booking.date || !booking.time || !name || !phone) {
-      alert("Заполните все поля");
-      return;
-    }
+  if (!booking.service || !booking.master || !booking.date || !booking.time || !name || !phone) {
+    alert("Заполните все поля");
+    return;
+  }
 
-    const newBooking = {
-      id: Date.now(),
-      masterId: booking.master,
-      serviceId: booking.service,
-      subservice: booking.subservice || null,
-      date: booking.date,
-      time: booking.time,
-      duration: booking.duration,
-      client: { name, phone },
-      status: "new",
-      createdAt: new Date().toISOString()
-    };
+  const newBooking = {
+    id: String(Date.now()),
+    masterId: booking.master,
+    serviceId: booking.service,
+    subservice: booking.subservice || null,
+    date: booking.date,
+    time: booking.time,
+    duration: booking.duration || 60,
+    client: { name, phone },
+    status: "new",
+    createdAt: new Date().toISOString()
+  };
 
-    const all = safeParse("bookings") || [];
-    all.push(newBooking);
+  // ================= BOOKING SAVE (FIXED) =================
+  const all = safeParse("bookings") || [];
+  all.push(newBooking);
+  localStorage.setItem("bookings", JSON.stringify(all));
 
-    localStorage.setItem("bookings", JSON.stringify(all));
+  // ================= NOTIFICATION SAVE (FIXED) =================
+  const notifKey = `notif_${newBooking.masterId}`;
+  const notifications = safeParse(notifKey) || [];
 
-    showBookingSuccess(newBooking);
-
-    Object.assign(booking, {
-      master: null,
-      service: null,
-      subservice: null,
-      duration: null,
-      date: null,
-      time: null
-    });
-
-    dateInput.value = "";
-const nameInput = document.querySelector('input[type="text"]');
-const phoneInput = document.querySelector('input[type="tel"]');
-
-if (nameInput) nameInput.value = "";
-if (phoneInput) phoneInput.value = "";
-    renderSubservices();
-    generateTimeSlots();
-    syncUI();
+  notifications.unshift({
+    text: `Новая запись: ${SERVICES_MAP[newBooking.serviceId] || newBooking.serviceId}`,
+    time: new Date().toLocaleString(),
+    bookingId: newBooking.id,
+    read: false
   });
+
+  localStorage.setItem(notifKey, JSON.stringify(notifications));
+
+  showBookingSuccess(newBooking);
+
+  Object.assign(booking, {
+    master: null,
+    service: null,
+    subservice: null,
+    duration: null,
+    date: null,
+    time: null
+  });
+
+  dateInput.value = "";
+  document.querySelector('input[type="text"]').value = "";
+  document.querySelector('input[type="tel"]').value = "";
+
+  renderSubservices();
+  generateTimeSlots();
+  syncUI();
+});
 
   // ================= MODAL =================
   function showBookingSuccess(b) {
@@ -354,7 +375,7 @@ if (phoneInput) phoneInput.value = "";
       <div style="background:white;padding:20px;border-radius:12px;text-align:center;max-width:340px">
         <h3>Запись подтверждена!</h3>
         <p>
-          <b>Вы записаны к мастеру${MASTERS?.[b.masterId]?.name || ""}</b><br><br>
+          <b>Вы записаны к мастеру ${MASTERS?.[b.masterId]?.name || ""}</b><br><br>
           Услуга: <b>${serviceName}</b><br>
           ${b.subservice ? `(${b.subservice})<br>` : ""}
           <br>

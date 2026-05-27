@@ -1,4 +1,4 @@
-// INIT
+// обработка
 const params = new URLSearchParams(window.location.search);
 const masterId = params.get("master");
 
@@ -16,7 +16,7 @@ const MASTERS = {
   anastasia: { name: "Анастасия Буторина", avatar: "img/anastasia.jpg" }
 };
 
-// STORAGE
+// локалка память
 const store = {
   get: (key) => {
     try { return JSON.parse(localStorage.getItem(key)); }
@@ -25,7 +25,7 @@ const store = {
   set: (key, val) => localStorage.setItem(key, JSON.stringify(val))
 };
 
-// CHECK MASTER
+// проверка мастера после логина
 if (!masterId || !MASTERS[masterId]) {
   alert("Мастер не найден");
   window.location.href = "master-login.html";
@@ -33,7 +33,7 @@ if (!masterId || !MASTERS[masterId]) {
 
 const master = MASTERS[masterId];
 
-// STATE
+// вывод записей
 let selectedDate = new Date().toISOString().split("T")[0];
 
 let schedule = {};
@@ -48,7 +48,7 @@ let notifications = [];
 
 let dateInput = null;
 
-// ================= INIT =================
+//обработка панели инфы
 window.addEventListener("DOMContentLoaded", () => {
 
   dateInput = document.querySelector(".date-bar input");
@@ -75,6 +75,7 @@ window.addEventListener("DOMContentLoaded", () => {
   schedule = store.get(`schedule_${masterId}`) || {};
   services = safeServices(store.get(`services_${masterId}`));
   notifications = store.get(`notif_${masterId}`) || [];
+if (!notifications) notifications = [];
 
   renderBookings();
   renderNextBookings();
@@ -84,7 +85,7 @@ window.addEventListener("DOMContentLoaded", () => {
   initTabs();
 });
 
-// ================= BOOKINGS =================
+// записи
 function renderBookings() {
 
   const body = document.getElementById("bookingsBody");
@@ -94,7 +95,7 @@ function renderBookings() {
 
   const filtered = all
     .filter(b => b.masterId === masterId && b.date === selectedDate)
-    .sort((a, b) => new Date(`${a.date}T${a.time}`) - new Date(`${b.date}T${b.time}`));
+    .sort((a, b) => new Date(`${a.date}T${a.time}`) - new Date(`${formatDate(b.date)}T${b.time}`));
 
   body.innerHTML = filtered.length
     ? filtered.map(b => {
@@ -121,7 +122,7 @@ function renderBookings() {
   if (count) count.textContent = filtered.length;
 }
 
-// ================= NEXT =================
+// ближайшие
 function renderNextBookings() {
 
   const el = document.getElementById("nextBookings");
@@ -146,15 +147,15 @@ function renderNextBookings() {
   el.innerHTML = todayBookings.length
     ? todayBookings.map(b => `
         <div class="next-item">
-          <div>${b.date} • ${b.time}</div>
+          <div>${formatDate(b.date)} • ${b.time}</div>
           <div>${b.client?.name || "Без имени"}</div>
-          <div>${SERVICES_MAP[b.serviceId] || "Услуга"}${b.subservice ? " • " + b.subservice : ""}</div>
+          <div><b>${SERVICES_MAP[b.serviceId] || "Услуга"}${b.subservice ? " • " + b.subservice : ""}</b</div>
         </div>
       `).join("")
     : `<p style="opacity:.6">На сегодня больше записей нет</p>`;
 }
 
-// SCHEDULE 
+// расписание
 function renderSchedule() {
 
   const el = document.getElementById("scheduleContainer");
@@ -262,7 +263,7 @@ function renderSchedule() {
   };
 }
 
-// ================= SERVICES =================
+// услуги
 function renderServices() {
 
   const el = document.getElementById("servicesContainer");
@@ -306,11 +307,6 @@ services[cat].push({
   duration: durationInput?.value ? Number(durationInput.value) : 60
 });
 
-services[category].push({
-  name,
-  price,
-  duration: Number(duration) || 60
-});
 
       store.set(`services_${masterId}`, safeServices(services));
       renderServices();
@@ -330,10 +326,11 @@ services[category].push({
   };
 }
 
-// ================= NOTIFICATIONS =================
+// уведомления
 function renderNotif() {
-
-  const el = document.getElementById("notificationsContainer");
+  notifications = store.get(`notif_${masterId}`) || [];
+  const dropdown = document.getElementById("notificationsContainer");
+  const tab = document.getElementById("notifications");
   const badge = document.getElementById("notifCount");
 
   const unread = notifications.filter(n => !n.read).length;
@@ -343,29 +340,145 @@ function renderNotif() {
     badge.style.display = unread ? "inline-block" : "none";
   }
 
-  if (!el) return;
+  // DROPDOWN (ТОЛЬКО СВОДКА) 
+const last = notifications.slice(0, 3);
 
-  el.innerHTML = notifications.length
-    ? notifications.map((n, i) => `
-        <div>
-          <p>${n.text}</p>
-          <small>${n.time}</small>
-          <button data-i="${i}">✔</button>
+dropdown.innerHTML = last.length
+  ? last.map(n => `
+    <div class="notif-item ${n.read ? "read" : ""}">
+
+      <div>🔔 ${n.text}</div>
+
+      <small>${n.time}</small>
+
+      <button class="notif-more" data-id="${n.bookingId}">
+        Подробнее
+      </button>
+
+    </div>
+  `).join("")
+  : "<p>Нет уведомлений</p>";
+
+  // настройка для TAB 
+  if (tab) {
+
+tab.innerHTML = notifications.length
+  ? notifications.map(n => {
+
+      const bookings = safeParse("bookings") || [];
+      const b = bookings.find(x => x.id === n.bookingId) || {};
+
+      return `
+        <div class="notif-full ${n.read ? "read" : ""}">
+
+          <h4>🔔 ${n.text}</h4>
+          <div>${n.time}</div>
+
+          <div class="notif-details">
+            <div><b>Услуга:</b> ${SERVICES_MAP[b.serviceId] || b.serviceId || "-"}</div>
+            <div><b>Подуслуга:</b> ${b.subservice || "-"}</div>
+            <div><b>Дата:</b> ${formatDate(b.date)}</div>
+            <div><b>Время:</b> ${b.time || "-"}</div>
+            <div><b>Клиент:</b> ${b.client?.name || "-"}</div>
+            <div><b>Телефон:</b> ${b.client?.phone || "-"}</div>
+          </div>
+
         </div>
-      `).join("")
-    : "<p>Пусто</p>";
-
-  el.onclick = (e) => {
-    const btn = e.target.closest("[data-i]");
-    if (!btn) return;
-
-    notifications[btn.dataset.i].read = true;
-    store.set(`notif_${masterId}`, notifications);
-    renderNotif();
-  };
+      `;
+    }).join("")
+  : "<p>Нет уведомлений</p>";
+  }
 }
 
-// ================= MENU =================
+// TAB SWITCH 
+function setTab(tabId) {
+
+  const tabs = document.querySelectorAll(".tab");
+  const buttons = document.querySelectorAll(".side-btn");
+
+  tabs.forEach(tab => {
+    tab.classList.remove("active");
+  });
+
+  buttons.forEach(btn => {
+    btn.classList.remove("active");
+  });
+
+  const activeTab = document.getElementById(tabId);
+  if (activeTab) {
+    activeTab.classList.add("active");
+  }
+
+  const activeBtn = document.querySelector(`.side-btn[data-tab="${tabId}"]`);
+  if (activeBtn) activeBtn.classList.add("active");
+}
+
+//  PANEL 
+function openNotifPanel() {
+  document.getElementById("notifPanel")?.classList.add("open");
+  renderNotif();
+}
+
+function closeNotifPanel() {
+  document.getElementById("notifPanel")?.classList.remove("open");
+}
+
+//  EVENTS 
+document.getElementById("openNotifBtn")?.addEventListener("click", () => {
+  openNotifPanel();
+});
+
+document.getElementById("closeNotifPanel")?.addEventListener("click", () => {
+  closeNotifPanel();
+});
+
+
+// "ПОДРОБНЕЕ" 
+document.addEventListener("click", (e) => {
+  const btn = e.target.closest(".notif-more");
+  if (!btn) return;
+
+  const bookingId = Number(btn.dataset.id);
+
+  let notificationsData = store.get(`notif_${masterId}`) || [];
+  if (!Array.isArray(notificationsData)) return;
+
+  notificationsData = notificationsData.map(n =>
+    Number(n.bookingId) === bookingId
+      ? { ...n, read: true }
+      : n
+  );
+
+  store.set(`notif_${masterId}`, notificationsData);
+
+  // синхронизация GLOBAL STATE
+  notifications = notificationsData;
+
+  renderNotif();
+  closeNotifPanel();
+  setTab("notifications");
+
+  const bookings = safeParse("bookings") || [];
+  const fullBooking = bookings.find(b => Number(b.id) === bookingId);
+
+  console.log("BOOKING:", fullBooking);
+});
+function safeParse(key) {
+  try {
+    return JSON.parse(localStorage.getItem(key)) || [];
+  } catch {
+    return [];
+  }
+}
+function formatDate(dateString) {
+  if (!dateString) return "-";
+
+  const [y, m, d] = dateString.split("-");
+
+  return `${d}.${m}.${y}`;
+}
+
+// бургер шапка
 document.getElementById("menuBtn")?.addEventListener("click", () => {
   document.getElementById("menuDropdown")?.classList.toggle("open");
 });
@@ -398,3 +511,27 @@ function initTabs() {
 
   });
 }
+// закрытие дропдауна вне 
+document.addEventListener("click", (e) => {
+  //  MENU 
+  const menu = document.getElementById("menuDropdown");
+  const menuBtn = document.getElementById("menuBtn");
+
+  if (menu && menuBtn) {
+    const insideMenu = menu.contains(e.target) || menuBtn.contains(e.target);
+    if (!insideMenu) menu.classList.remove("open");
+  }
+
+  //  NOTIF PANEL 
+  const notifPanel = document.getElementById("notifPanel");
+  const openNotifBtn = document.getElementById("openNotifBtn");
+
+  if (notifPanel && openNotifBtn) {
+    const insideNotif =
+      notifPanel.contains(e.target) || openNotifBtn.contains(e.target);
+
+    if (!insideNotif) {
+      notifPanel.classList.remove("open");
+    }
+  }
+});

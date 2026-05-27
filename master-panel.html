@@ -14,8 +14,16 @@
   </h1>
   <div class="master-right">
     <div class="notif-wrapper">
-      <button class="notif-btn">🔔</button>
+      <button class="notif-btn" id="openNotifBtn">🔔</button>
       <span id="notifCount" class="notif-badge">0</span>
+    </div>
+
+    <div id="notifPanel" class="notif-panel">
+      <div class="notif-panel-header">
+        <b>Уведомления</b>
+      <button id="closeNotifPanel">✕</button>
+      </div>
+      <div id="notificationsContainer"></div>
     </div>
 
     <div class="master-profile">
