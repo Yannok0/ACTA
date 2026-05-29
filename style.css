@@ -897,19 +897,39 @@ nav a {
   transform: translateY(-2px);
 }
 
-/* SERVICES PANEL */
+/* SERVICES PANEL — исправленный блок */
 
 .service-form {
   display: flex;
   gap: 12px;
   margin-bottom: 25px;
+  align-items: stretch;
 }
 
-.service-form input {
+/* Все элементы в строке добавления — одинаковая высота */
+.service-form input,
+.service-form select {
+  height: 50px;
+  padding: 0 15px;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 16px;
   flex: 1;
+  box-sizing: border-box;
 }
 
-.gold-btn {
+.service-form select {
+  background: #fff;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding-right: 30px;
+}
+
+.service-form .gold-btn,
+.service-form #addService {
   height: 50px;
   padding: 0 22px;
   border: none;
@@ -921,12 +941,17 @@ nav a {
   font-size: 15px;
   font-weight: 600;
   transition: 0.2s ease;
+  white-space: nowrap;
+  flex: 0 0 auto;
+  box-sizing: border-box;
 }
 
-.gold-btn:hover {
+.service-form .gold-btn:hover,
+.service-form #addService:hover {
   transform: translateY(-2px);
 }
 
+/* Список услуг */
 .service-list {
   display: flex;
   flex-direction: column;
@@ -948,30 +973,172 @@ nav a {
   display: flex;
   gap: 12px;
   flex: 1;
+  align-items: center;
 }
 
-.service-input {
+.service-info input {
   height: 46px;
+  padding: 0 12px;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 14px;
+  flex: 1;
+  box-sizing: border-box;
 }
 
-.service-input.price {
+.service-info input.price {
   max-width: 160px;
 }
 
-.delete-service {
+.service-info input[data-field="duration"] {
+  max-width: 100px;
+}
+
+.delete-service,
+.del-service {
   width: 42px;
   height: 42px;
-  border: none;
+  border: 1px solid #ddd;
   border-radius: 10px;
   background: #fff0f0;
   color: #c40000;
   cursor: pointer;
   font-size: 18px;
   transition: 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
-.delete-service:hover {
+.delete-service:hover,
+.del-service:hover {
   background: #ffdede;
+}
+
+/* Кнопка обновления услуги */
+.update-service {
+  width: 42px;
+  height: 42px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: 0.2s ease;
+}
+
+.update-service:hover {
+  background: #f0f0f0;
+  border-color: #999;
+}
+
+/* Переопределение для кнопки Добавить в панели услуг */
+#addService {
+  height: 50px;
+  padding: 0 22px;
+  border: none;
+  border-radius: 10px;
+  background: #e5c96b;
+  color: #111;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  transition: 0.2s ease;
+}
+
+#addService:hover {
+  transform: translateY(-2px);
+  background: #e5c96b;
+}
+
+/* Контейнер услуг */
+#servicesContainer {
+  padding: 0;
+}
+
+#servicesContainer > div:first-child {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 25px;
+  align-items: stretch;
+}
+
+#servicesContainer input {
+  height: 50px;
+  padding: 0 15px;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+#servicesContainer select {
+  height: 50px;
+  padding: 0 15px;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 16px;
+  background: #fff;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+/* Убираем конфликт с общими стилями кнопок */
+button#addService {
+  background: #e5c96b;
+  color: #111;
+}
+
+button#addService:hover {
+  background: #d4b85a;
+  transform: translateY(-2px);
+}
+
+/* Стилизация выпадающего списка селекта */
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 35px;
+}
+
+/* Стили для option (опций) внутри селекта */
+select option {
+  padding: 10px 15px;
+  font-family: inherit;
+  font-size: 16px;
+  background: #fff;
+  color: #333;
+}
+
+/* При наведении на option */
+select option:hover {
+  background: #f5f5f5;
+}
+
+/* Размер шрифта в селекте как в инпутах */
+.service-form select,
+#servicesContainer select {
+  font-size: 16px;
+  color: #333;
+}
+
+/* Убираем обводку при фокусе */
+select:focus {
+  outline: none;
+  border-color: #111;
 }
 
 /* MASTER PANEL — BASE */
@@ -1060,9 +1227,14 @@ nav a {
   background: #fff;
   border-radius: 10px;
   cursor: pointer;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.menu-dropdown {
+/* Удалите старые стили .menu-dropdown и #menuDropdown, оставьте только этот */
+#menuDropdown {
   position: absolute;
   right: 0;
   top: 50px;
@@ -1073,43 +1245,46 @@ nav a {
   border: 1px solid #eee;
   border-radius: 14px;
   padding: 10px;
-  min-width: 180px;
+  min-width: 200px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.08);
   z-index: 999;
-
-}
-
-.menu-dropdown a,
-.menu-dropdown button {
-  text-align: left;
-  font-family: inherit;
-  padding: 15px 5px;
-  text-decoration: none;
-}
-
-.menu-dropdown a:hover,
-.menu-dropdown button:hover {
-  background: #f5f5f5;
-}
-
-#menuDropdown {
-  display: none;
-  position: absolute;
-  right: 20px;
-  top: 80px;
-  background: #fff;
-  border: 1px solid #eee;
-  border-radius: 12px;
-  padding: 10px;
-  flex-direction: column;
-  gap: 10px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
 #menuDropdown.open {
   display: flex;
 }
 
+#menuDropdown a,
+#menuDropdown button {
+  text-align: left;
+  font-family: inherit;
+  padding: 12px 16px;
+  text-decoration: none;
+  color: #333;
+  background: none;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+  width: 100%;
+  display: block;
+}
+
+#menuDropdown a:hover,
+#menuDropdown button:hover {
+  background: #f5f5f5;
+}
+
+#logoutBtnMenu {
+  color: #e74c3c !important;
+  border-top: 1px solid #eee;
+  margin-top: 4px;
+  padding-top: 12px;
+}
+
+#logoutBtnMenu:hover {
+  background: #fff5f5 !important;
+}
 /* TITLE */
 .master-title {
   font-size: 20px;
@@ -1168,7 +1343,10 @@ nav a {
 }
 
 /* ICON */
-
+#notifPanel {
+  position: absolute;
+  z-index: 9999;
+}
 .notif-icon {
   width: 18px;
   height: 18px;
@@ -1431,9 +1609,7 @@ nav a {
   border-color: #caa46a;
 }
 
-/* 
-   GLOBAL BUTTON STYLE
- */
+/* GLOBAL BUTTON STYLE */
 
 button {
   font-family: inherit;
@@ -1478,9 +1654,7 @@ button[data-i]:hover {
   background: #f5f5f5;
 }
 
-/* 
-   SELECT (селектора)
- */
+/* SELECT (селектора) */
 
 select {
   padding: 10px;
@@ -1501,9 +1675,7 @@ select:focus {
   border-color: #111;
 }
 
-/* 
-   INPUT STYLE
- */
+/* INPUT STYLE */
 
 input {
   padding: 10px;
@@ -1576,7 +1748,7 @@ input:focus {
   display: block;
 }
 
-/* ================= NOTIFICATIONS ================= */
+/*  NOTIFICATIONS  */
 
 .notif-item,
 .notif-full {
@@ -1630,7 +1802,7 @@ input:focus {
   background: #333;
 }
 
-/* TAB уведомлений (полный блок) */
+/* TAB уведомлений  */
 .notif-full {
   padding: 16px;
 }
@@ -1661,9 +1833,7 @@ input:focus {
 }
 /* КОНЕЦ ЛК*/
 
-/* FULL MOBILE ADAPTIVE (REPLACE OLD ONE) */
-
-/* базовая защита */
+/* FULL MOBILE ADAPTIVE */
 html, body {
   max-width: 100%;
   overflow-x: hidden;
@@ -1831,7 +2001,7 @@ html, body {
     font-size: 18px;
   }
 
-  /* BOOKING — нормализация размеров */
+  /* BOOKING  */
 
   .booking-page {
     margin: 40px auto;
@@ -1924,9 +2094,7 @@ html, body {
   }
 
 
-/* 
-   SMALL PHONES (<=480px)
-    */
+/* SMALL PHONES (<=480px) */
 
 @media (max-width: 480px) {
 

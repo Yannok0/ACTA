@@ -34,9 +34,9 @@
       <button class="menu-btn" id="menuBtn">☰</button>
 
       <div class="menu-dropdown" id="menuDropdown">
-          <a class="side-btn" href="index.html">Главная</a>
-          <a class="side-btn" href="booking.html">Запись клиентам</a>
-      <button class="side-btn" id="logoutBtnMenu">Выйти</button>
+          <a class="menu-btn-item" href="index.html">Главная</a>
+          <a class="menu-btn-item" href="booking.html">Запись клиентам</a>
+      <button class="menu-btn-item" id="logoutBtnMenu">Выйти</button>
     </div>
 </div>
   </div>
@@ -45,10 +45,10 @@
 
   <!-- SIDEBAR -->
   <aside class="master-sidebar">
-    <button class="side-btn active" data-tab="bookings">Записи</button>
-    <button class="side-btn" data-tab="schedule">Расписание</button>
-    <button class="side-btn" data-tab="services">Услуги</button>
-    <button class="side-btn" data-tab="notifications">Уведомления</button>
+    <button class="tab-btn side-btn active" data-tab="bookings">Записи</button>
+    <button class="tab-btn side-btn" data-tab="schedule">График</button>
+    <button class="tab-btn side-btn" data-tab="services">Мои услуги</button>
+    <button class="tab-btn side-btn" data-tab="notifications">Уведомления</button>
   </aside>
 
   <!-- CONTENT -->
@@ -96,13 +96,8 @@
 
     <!-- SERVICES -->
     <section class="tab" id="services">
-      <h2>Мои услуги</h2>
+      <h2>Услуги</h2>
       <div id="servicesContainer"></div>
-      <select id="serviceCategory">
-  <option value="coloring">Окрашивание</option>
-  <option value="haircut">Стрижка</option>
-  <option value="care">Уход</option>
-</select>
     </section>
 
 
@@ -113,7 +108,7 @@
     </section>
   </main>
 </div>
-
-<script src="panel.js"></script>
+<script type="module" src="firebase.js"></script>
+<script type="module" src="panel.js"></script>
 </body>
 </html>

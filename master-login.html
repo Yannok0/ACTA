@@ -34,50 +34,11 @@
       <p id="error"></p>
     </form>
   </div>
-
-  <script>
-    
-console.log("LOGIN PAGE");
-
-const page = document.body?.dataset?.page;
-
-const USERS = {
-  tatyana: "architec.color1",
-  angelina: "architec.color1",
-  anastasia: "architec.color1"
-};
-
-// логин панель
-if (page === "login") {
-
-  const form = document.getElementById("loginForm");
-
-  form?.addEventListener("submit", (e) => {
-    e.preventDefault();
-
-    const login = document.getElementById("login").value.trim().toLowerCase();
-    const pass = document.getElementById("password").value.trim();
-
-    if (!login || !pass) return;
-
-    if (USERS[login] === pass) {
-      window.location.href = `master-panel.html?master=${login}`;
-    } else {
-      document.getElementById("error").textContent =
-        "Неверный логин или пароль";
-    }
-  });
-
-  const toggle = document.getElementById("togglePassword");
-  const input = document.getElementById("password");
-
-  toggle?.addEventListener("click", () => {
-    const hidden = input.type === "password";
-    input.type = hidden ? "text" : "password";
-    toggle.textContent = hidden ? "⌣" : "👁";
-  });
-}
-  </script>
+<script type="module">
+  import "./firebase.js";
+  import "./login.js";
+</script>
+<script type="module" src="login.js"></script>
 
 </body>
 </html>
