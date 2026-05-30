@@ -32,7 +32,65 @@
       <button type="submit">Войти</button>
       
       <p id="error"></p>
+      <div style="text-align:center; margin-top:10px;">
+  <a href="#" id="forgotPassword" style="color:#666; font-size:14px; text-decoration:none;">
+    Забыли пароль?
+  </a>
+</div>
+
+<!-- Модальное окно для сброса -->
+<div id="resetModal" style="
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.5);
+  z-index:9999;
+  align-items:center;
+  justify-content:center;
+">
+  <div style="
+    background:white;
+    padding:30px;
+    border-radius:16px;
+    max-width:360px;
+    text-align:center;
+  ">
+    <h3 style="margin:0 0 15px;">Сброс пароля</h3>
+    <p style="font-size:14px; color:#666; margin-bottom:20px;">
+      Введите ваш email. Мы отправим ссылку для сброса пароля.
+    </p>
+    <input id="resetEmail" type="email" placeholder="email@mail.ru" style="
+      width:100%;
+      padding:12px;
+      border:2px solid #ddd;
+      border-radius:10px;
+      font-size:16px;
+      margin-bottom:15px;
+      box-sizing:border-box;
+    ">
+    <button id="sendReset" style="
+      width:100%;
+      padding:12px;
+      background:#e5c96b;
+      border:none;
+      border-radius:10px;
+      font-size:16px;
+      cursor:pointer;
+      font-family:inherit;
+      margin-bottom:10px;
+    ">Отправить</button>
+    <button id="closeReset" style="
+      background:none;
+      border:none;
+      color:#666;
+      cursor:pointer;
+      font-size:14px;
+      text-decoration:underline;
+    ">Отмена</button>
+  </div>
     </form>
+
+</div>
   </div>
 <script type="module">
   import "./firebase.js";

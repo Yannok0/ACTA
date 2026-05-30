@@ -172,7 +172,7 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 
   // ================= SUBSERVICES =================
-  async function renderSubservices() {
+ async function renderSubservices() {
 
     if (!subservicesContainer) return;
 
@@ -188,9 +188,23 @@ window.addEventListener("DOMContentLoaded", () => {
       booking.subservice = null;
       booking.duration = CONSULTATION.duration;
 
-      subservicesContainer.innerHTML =
-        "<p style='opacity:.6'>Консультация не требует выбора</p>";
-
+      subservicesContainer.innerHTML = `
+        <div style="
+          background:#fff;
+          border:2px solid #e5c96b;
+          border-radius:14px;
+          padding:20px;
+          text-align:center;
+        ">
+          <p style="font-size:18px; font-weight:600; margin:0 0 10px;">
+            ✍🏻 Консультация
+          </p>
+          <p style="font-size:24px; font-weight:700; color:#e5c96b; margin:0 0 5px;"> 500 ₽ </p>
+          <p style="font-size:14px; color:#666; margin:0;">
+            Длительность: ${CONSULTATION.duration} мин
+          </p>
+        </div>
+      `;
       generateTimeSlots();
       return;
     }
@@ -209,32 +223,114 @@ window.addEventListener("DOMContentLoaded", () => {
 
     subservicesContainer.innerHTML = "";
 
-    list.forEach(item => {
-      const btn = document.createElement("button");
-      btn.className = "subservice-btn";
-      btn.textContent = item.name;
+    // Заголовок категории с эмодзи
+    const categoryEmoji = {
+      coloring: "👩🏻‍🦰",
+      haircut: "💇🏻",
+      care: "💆🏻"
+    };
+    
+    const categoryHeader = document.createElement("div");
+    categoryHeader.style.cssText = `
+      width:100%;
+      margin-bottom:15px;
+      font-size:18px;
+      font-weight:600;
+      color:#333;
+    `;
+    categoryHeader.textContent = `${categoryEmoji[booking.service] || ""} ${SERVICES_MAP[booking.service]}`;
+    subservicesContainer.appendChild(categoryHeader);
 
+    list.forEach(item => {
+      const card = document.createElement("div");
+      card.style.cssText = `
+        background:#fff;
+        border:2px solid ${booking.subservice === item.name ? '#e5c96b' : '#eee'};
+        border-radius:14px;
+        padding:16px 20px;
+        margin-bottom:10px;
+        cursor:pointer;
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        transition: all 0.2s ease;
+        font-family: inherit;
+      `;
+      
       if (booking.subservice === item.name) {
-        btn.classList.add("active");
+        card.classList.add("active");
       }
 
-      btn.addEventListener("click", () => {
+      card.innerHTML = `
+        <div style="flex:1;">
+          <div style="font-size:16px; font-weight:500; margin-bottom:4px;">
+            ${item.name}
+          </div>
+          <div style="font-size:13px; color:#888;">
+            ⏱ ${formatDuration(item.duration || 60)}
+          </div>
+        </div>
+        <div style="font-size:22px; font-weight:700; color:#111; white-space:nowrap; margin-left:15px;">
+          ${item.price ? item.price + " ₽" : ""}
+        </div>
+      `;
 
+      card.addEventListener("click", () => {
         booking.subservice = item.name;
         booking.duration = item.duration;
-        booking.time = null;
 
+        // Обновляем активный класс
         document.querySelectorAll(".subservice-btn").forEach(b =>
-          b.classList.toggle("active", b.textContent === booking.subservice)
+          b.classList.remove("active")
         );
+        card.classList.add("active");
+
+        // Обновляем все карточки
+        subservicesContainer.querySelectorAll("div[style]").forEach(c => {
+          if (c !== card && c.style.cursor === "pointer") {
+            c.style.borderColor = "#eee";
+          }
+        });
+        card.style.borderColor = "#e5c96b";
 
         generateTimeSlots();
         syncUI();
       });
 
-      subservicesContainer.appendChild(btn);
+      // Ховер эффект
+      card.addEventListener("mouseenter", () => {
+        if (booking.subservice !== item.name) {
+          card.style.borderColor = "#ddd";
+          card.style.transform = "translateY(-2px)";
+          card.style.boxShadow = "0 4px 12px rgba(0,0,0,0.05)";
+        }
+      });
+      card.addEventListener("mouseleave", () => {
+        if (booking.subservice !== item.name) {
+          card.style.borderColor = "#eee";
+          card.style.transform = "none";
+          card.style.boxShadow = "none";
+        }
+      });
+
+      subservicesContainer.appendChild(card);
     });
   }
+// Вспомогательная функция для форматирования длительности
+function formatDuration(minutes) {
+  if (!minutes || minutes <= 0) return "";
+  
+  const hours = Math.floor(minutes / 60);
+  const mins = minutes % 60;
+  
+  if (hours > 0 && mins > 0) {
+    return `${hours} ч ${mins} мин`;
+  } else if (hours > 0) {
+    return `${hours} ч`;
+  } else {
+    return `${mins} мин`;
+  }
+}
 
   // ================= DATE =================
   if (dateInput) {

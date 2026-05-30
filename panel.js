@@ -80,11 +80,10 @@ window.addEventListener("DOMContentLoaded", async () => {
 // Получение masterId по email (синхронная, без запроса к Firestore)
 function getMasterIdByEmail(email) {
   const emailMap = {
-    "tatyana@test.com": "tatyana",
-    "angelina@test.com": "angelina",
-    "anastasia@test.com": "anastasia"
+    "aglamutdinova@yandex.ru": "tatyana",
+    "yvoroxova@mail.ru": "angelina",
+    "nastena.prokhorova.1999@inbox.ru": "anastasia"
   };
-  
   return emailMap[email] || null;
 }
 
